@@ -4247,6 +4247,16 @@
 </table>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-combatdice">
+	<div class="sheet-template-container">
+		<h1>{{name}}</h1>
+		<div class="sheet-results">
+			<h4>Sum: {{computed::roll1}} + {{fixedMod}}</h4>
+			<h4>Effect: {{roll1}}</h4>
+		</div>
+	</div>
+</rolltemplate>
+
 <!-- Sheet workers -->
 <script type="text/worker">
 	on('sheet:opened', function(){
@@ -5617,6 +5627,45 @@
 				setObj[attr.to.name] = Number(values[attr.to.name]) + Number(attr.to.inc);
 			}
 			setAttrs(setObj);
+		});
+	});
+
+	function calcTotalAndEffect(rolls) {
+		let results = {
+			rollSum: 0,
+			effectSum: 0
+		}
+	
+		rolls.forEach(roll => {
+			switch(roll) {
+				case 1:
+					results.rollSum = results.rollSum + 1
+					break;
+				case 2:
+					results.rollSum = results.rollSum + 2
+					break;
+				case 6:
+					results.effectSum = results.effectSum + 1
+					break;
+				default:
+					break;
+			}
+		});
+	
+		return results;
+	}
+	
+	on('clicked:rollCombatDice', (info) => {
+		startRoll("&{template:combatdice} {{name=Combat Dice}} {{roll1=[[?{Number of dice|5}d6>6cf0]]}} {{fixedMod=[[?{Fixed mod|2}]]}}", (results) => {
+			const dice = results.results.roll1.dice;
+			const computed = calcTotalAndEffect(dice).rollSum;
+	
+			finishRoll(
+				results.rollId,
+				{
+					roll1: computed
+				}
+			);
 		});
 	});
 </script>
