@@ -4200,59 +4200,68 @@
 
 <!-- Roll Templates -->
 <rolltemplate class="sheet-rolltemplate-skillroll">
-<table>
-	<tr>
-		<th colspan="2">{{#header}}{{header}}{{/header}}</th>
-	</tr>
-	<tr>
-		<td class="sheet-subheader" colspan="2">
-			{{#character_name}}{{character_name}}, {{/character_name}}{{#subheader}}{{subheader}}{{/subheader}}
-		</td>
-	</tr>
-	{{#skill}}
-	<tr class="sheet-rolltemplate-body">
-		<td class="sheet-rolltemplate-label">Skill:</td>
-		<td>{{skill}}{{#skill_exp}}, EXP <span class="sheet-rolltemplate-greenborder">{{skill_exp}}</span>{{/skill_exp}}{{#skill_foc}} FOC <span class="sheet-rolltemplate-blueborder">{{skill_foc}}</span>{{/skill_foc}}</td>
-	</tr>
-	{{/skill}}
-	{{#attribute}}
-	<tr class="sheet-rolltemplate-body">
-		<td class="sheet-rolltemplate-label">Attribute:</td>
-		<td>{{attribute}}</td>
-	</tr>
-	{{/attribute}}
-	{{#ammo}}
-	<tr>
-		<td class="sheet-rolltemplate-label">Ammo:</td>
-		<td>{{ammo}}</td>
-	</tr>
-	{{/ammo}}
-	{{#qualities}}
-	<tr>
-		<td class="sheet-rolltemplate-label">Qualities:</td>
-		<td>{{qualities}}</td>
-	</tr>
-	{{/qualities}}
-	{{#roll}}
-	<tr>
-		<td class="sheet-rolltemplate-label">Result:</td>
-		<td style="padding:1px">{{roll}}</td>
-	</tr>
-	{{/roll}}
-	{{#damage_roll}}
-	<tr>
-		<td colspan="2" style="text-align:center">{{damage_roll}}</td>
-	</tr>
-	{{/damage_roll}}
-</table>
+	<div class="grid">
+		<h1>
+			{{#header}}{{header}}{{/header}}
+		</h1>
+		<h2>
+			{{#character_name}}{{character_name}}, {{/character_name}}
+			{{#subheader}}{{subheader}}{{/subheader}}
+		</h2>
+
+		{{#skill}}
+		<label>Skill:</label>
+		<div>
+			<label>{{skill}}</label>
+			{{#skill_exp}}
+			<label>, EXP </label>
+			<span class="attr-disp">{{skill_exp}}</span>
+			{{/skill_exp}}
+			{{#skill_foc}}
+			<label> FOC </label>
+			<span class="attr-disp">{{skill_foc}}</span>
+			{{/skill_foc}}
+		</div>
+		{{/skill}}
+
+		{{#attribute}}
+		<label>Attribute:</label>
+		<div><label>{{attribute}}</label></div>
+		{{/attribute}}
+
+		{{#ammo}}
+		<label>Ammo:</label>
+		<div><label>{{ammo}}</label></div>
+		{{/ammo}}
+		{{#qualities}}
+		<label>Qualities:</label>
+		<div><label>{{qualities}}</label></div>
+		{{/qualities}}
+		{{#roll}}
+		<label>Result:</label>
+		<span>{{roll}}</span>
+		{{/roll}}
+		{{#damage_roll}}
+		<div class="button">
+			<span>{{damage_roll}}</span>
+		</div>
+		{{/damage_roll}}
+	</div>
 </rolltemplate>
 
 <rolltemplate class="sheet-rolltemplate-combatdice">
-	<div class="sheet-template-container">
-		<h1>{{name}}</h1>
-		<div class="sheet-results">
-			<h4>Sum: {{computed::roll1}} + {{fixedMod}}</h4>
-			<h4>Effect: {{roll1}}</h4>
+	<div class="grid">
+		<h1>Damage roll</h1>
+		<h2>{{name}}</h2>
+		<div>
+			<label>Sum: </label>
+			<span>{{computed::effectCount}}</span>
+			<label> + </label>
+			<span>{{fixedMod}}</span>
+		</div>
+		<div>
+			<label>Effect: </label>
+			<span>{{effectCount}}</span>
 		</div>
 	</div>
 </rolltemplate>
@@ -5632,20 +5641,20 @@
 
 	function calcTotalAndEffect(rolls) {
 		let results = {
-			rollSum: 0,
-			effectSum: 0
+			sum: 0,
+			effect: 0
 		}
 	
 		rolls.forEach(roll => {
 			switch(roll) {
 				case 1:
-					results.rollSum = results.rollSum + 1
+					results.sum = results.sum + 1
 					break;
 				case 2:
-					results.rollSum = results.rollSum + 2
+					results.sum = results.sum + 2
 					break;
 				case 6:
-					results.effectSum = results.effectSum + 1
+					results.effect = results.effect + 1
 					break;
 				default:
 					break;
@@ -5656,16 +5665,18 @@
 	}
 	
 	on('clicked:rollCombatDice', (info) => {
-		startRoll("&{template:combatdice} {{name=Combat Dice}} {{roll1=[[?{Number of dice|5}d6>6cf0]]}} {{fixedMod=[[?{Fixed mod|2}]]}}", (results) => {
-			const dice = results.results.roll1.dice;
-			const computed = calcTotalAndEffect(dice).rollSum;
+		startRoll("&{template:combatdice} {{name=Combat Dice}} {{effectCount=[[?{Number of dice|5}d6>6cf0]]}} {{fixedMod=[[?{Fixed mod|2}[Fixed modifier]]]}}", (allRolls) => {
+			
+			const computed = calcTotalAndEffect(allRolls.results.effectCount.dice);
+
+			console.log(allRolls.results);
+			console.log(computed);
+
+			const computedResults = {
+				effectCount: computed.sum
+			};
 	
-			finishRoll(
-				results.rollId,
-				{
-					roll1: computed
-				}
-			);
+			finishRoll(allRolls.rollId, computedResults);
 		});
 	});
 </script>

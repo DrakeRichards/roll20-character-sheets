@@ -256,18 +256,22 @@ button[type=roll] {
 	/* #endregion */
 
 	/* #region Flexbox */
-	.container {
+	.container,
+	.sheet-rolltemplate-skillroll .sheet-container,
+	.sheet-rolltemplate-combatdice .sheet-container {
 		display: flex;
 	}
 
-	.row {
+	.row,
+	.sheet-rolltemplate-combatdice .sheet-row {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
 		margin: 0;
 	}
 
-	.column {
+	.column,
+	.sheet-rolltemplate-combatdice .sheet-column {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -1186,91 +1190,134 @@ table.WeaponStats-bottom td.StatInput button {
 
 /* #endregion: NPC */
 
+.icon-N-small {
+	display: inline-block;
+	vertical-align: middle;
+	width: 16px;
+  }
+
 /* === ROLL TEMPLATES === */
 
-.sheet-rolltemplate-skillroll table {
-	border-collapse: collapse;
-	width: 100%;
+.sheet-rolltemplate-combatdice .sheet-grid label,
+.sheet-rolltemplate-skillroll .sheet-grid label {
+	margin: 0;	/* Roll20 default template adds a margin to labels. This removes it. */
 }
 
-.sheet-rolltemplate-skillroll td {
-	font-weight: bold;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	font-size: .8em;
-	border-style: none;
-	color: black;
+.sheet-rolltemplate-combatdice .sheet-grid,
+.sheet-rolltemplate-skillroll .sheet-grid {
+	display: grid;
 	background: #eff7fa;
-	font-family: Arial;
+	align-items: center;
 }
 
-.sheet-rolltemplate-label {
-	text-align: right;
-	width: 80px;
-	padding-right: 3px;
+.sheet-rolltemplate-combatdice .sheet-grid {
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto auto;
+	grid-template-areas: 	"header header"
+							"data data";
 }
 
-.sheet-rolltemplate-body span {
-	padding: 2px;
-	background: #ffff99;
-	font-weight: bold;
+.sheet-rolltemplate-skillroll .sheet-grid {
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: auto auto;
+	grid-template-areas:	"header header"
+							"header header"
+							"label data"
+							"label data"
+							"label data";
+	grid-auto-rows: 26px;
 }
 
-.sheet-rolltemplate-greenborder {
-	border: 1px solid #33cc00;
+.sheet-rolltemplate-combatdice .sheet-grid h1,
+.sheet-rolltemplate-combatdice .sheet-grid h2,
+.sheet-rolltemplate-skillroll .sheet-grid h1,
+.sheet-rolltemplate-skillroll .sheet-grid h2,
+.sheet-rolltemplate-skillroll .sheet-grid .sheet-button {
+	grid-column-start: 1;
+	grid-column-end: 3;
 }
 
-.sheet-rolltemplate-blueborder {
-	border: 1px solid #3366ff;
-}
-
-.sheet-rolltemplate-skillroll .sheet-subheader {
-	text-align: center;
-	padding: 2px;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#981c1c+0,281c26+52 */
-	background: #981c1c; /* Old browsers */
-	background: -moz-linear-gradient(top, #981c1c 0%, #281c26 52%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #981c1c 0%,#281c26 52%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #981c1c 0%,#281c26 52%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#981c1c', endColorstr='#281c26',GradientType=0 ); /* IE6-9 */
-	color: white;
-	border-style: solid;
-	border-width: 1px;
-	border-collapse: separate;
-	border-color: #be4135;
-}
-
-.sheet-rolltemplate-skillroll .subheader span.inlinerollresult {
-	background-color: transparent;
-	border-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-.sheet-rolltemplate-skillroll th {
+.sheet-rolltemplate-combatdice .sheet-grid h1,
+.sheet-rolltemplate-skillroll .sheet-grid h1 {
 	height: auto;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Infinity-2d20/rolltemplate-header.png");
-	background-color: #0d3956;
+	padding: 0 0 0 5px;
+
+	font-family: Arial;	
 	color: white;
-	padding: 5px;
 	font-size: 1.3em;
 	text-shadow:
 		-2px -2px 0 black,
 		2px -2px 0 black,
 		-2px 2px 0 black,
 		2px 2px 0 black;
+
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Infinity-2d20/rolltemplate-header.png");
+	background-color: #0d3956;
+
 	border-style: solid solid none;
 	border-width: 1px;
 	border-color: black;
-	font-family: Arial;	
 }
 
-.icon-N-small {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
+.sheet-rolltemplate-combatdice .sheet-grid h2,
+.sheet-rolltemplate-skillroll .sheet-grid h2 {
+	padding: 2px;
+	
+	color: white;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: unset;
+	text-align: center;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#981c1c+0,281c26+52 */
+	background: #981c1c; /* Old browsers */
+	background: -moz-linear-gradient(top, #981c1c 0%, #281c26 52%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #981c1c 0%,#281c26 52%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #981c1c 0%,#281c26 52%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#981c1c', endColorstr='#281c26',GradientType=0 ); /* IE6-9 */
+
+	border-style: solid;
+	border-width: 1px;
+	border-collapse: separate;
+	border-color: #be4135;
+}
+
+.sheet-rolltemplate-combatdice .sheet-grid > div,
+.sheet-rolltemplate-skillroll .sheet-grid > div,
+.sheet-rolltemplate-skillroll .sheet-grid .sheet-button {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: left;
+}
+
+.sheet-rolltemplate-skillroll .sheet-grid .sheet-button {
+	justify-content: center;
+}
+
+.sheet-rolltemplate-skillroll .sheet-grid .sheet-button > span > a {
+	height: 22px;
+	padding: 0 4px 0 4px;
+}
+
+.sheet-rolltemplate-combatdice .sheet-grid > div {
+	padding: 6px 0 4px 0;
+}
+
+.sheet-rolltemplate-combatdice .sheet-grid > div > label,
+.sheet-rolltemplate-skillroll .sheet-grid > div > label,
+.sheet-rolltemplate-skillroll .sheet-grid > label {
+	color: black;
+	font-family: Arial;
+}
+
+.sheet-rolltemplate-skillroll .sheet-grid > label {
+	margin: 0;
+	padding-right: 4px;
+	text-align: right;
+	justify-content: right;
 }
 
 /* #region: Legacy sheet styles */
@@ -1516,3 +1563,32 @@ table.WeaponStats-bottom td.StatInput button {
 	}
 
 /* #endregion: Legacy sheet styles */
+
+.sheet-rolltemplate-combatdice .sheet-grid > div > label {
+	margin: 0 4px 0 4px;
+}
+
+.sheet-rolltemplate-skillroll .sheet-grid > div label + span {
+	margin-left: 3px;
+}
+
+.sheet-rolltemplate-skillroll .sheet-grid > div span + label {
+	margin-left: 3px;
+}
+
+.sheet-rolltemplate-skillroll .sheet-attr-disp {
+	background-color: var(--dark-primary);
+	border: 2px solid var(--dark-primary);
+	padding: 0px 3px 0px 3px;
+	height: fit-content;
+	font-weight: bold;
+	font-size: 1.1em;
+	cursor: help;
+}
+
+.sheet-rolltemplate-skillroll .sheet-grid h2 ~ label,
+.sheet-rolltemplate-skillroll .sheet-grid h2 ~ span,
+.sheet-rolltemplate-skillroll .sheet-grid h2 ~ div {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
