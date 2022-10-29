@@ -1266,8 +1266,9 @@ table.WeaponStats-bottom td.StatInput button {
 	padding: 2px;
 	
 	color: white;
-	font-family: inherit;
-	font-size: inherit;
+	font-family: 'Arial';
+	font-size: 0.8em;
+	font-weight: normal;
 	line-height: unset;
 	text-align: center;
 
@@ -1577,13 +1578,18 @@ table.WeaponStats-bottom td.StatInput button {
 }
 
 .sheet-rolltemplate-skillroll .sheet-attr-disp {
-	background-color: var(--dark-primary);
-	border: 2px solid var(--dark-primary);
-	padding: 0px 3px 0px 3px;
-	height: fit-content;
+	background: #ffff99;
+	border: 1px solid #ffff99;
 	font-weight: bold;
-	font-size: 1.1em;
+
+	padding: 0px 2px 0px 2px;
+	height: fit-content;
 	cursor: help;
+}
+
+.sheet-rolltemplate-darkmode .sheet-attr-disp {
+	background: var(--dark-primary);
+	border-color: var(--dark-primary);
 }
 
 .sheet-rolltemplate-skillroll .sheet-grid h2 ~ label,
