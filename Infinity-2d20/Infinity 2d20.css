@@ -637,8 +637,8 @@ div.section {
 			border-left-style: none;
 		}
 
-		table.WeaponStats tr:nth-child(3) td:nth-child(4) input[type=text] {
-			width: 50%;
+		table.WeaponStats tr:nth-child(3) td:nth-child(4) input {
+			width: 45%;
 		}
 
 		/* Bottom row: Damage type & reloads */
