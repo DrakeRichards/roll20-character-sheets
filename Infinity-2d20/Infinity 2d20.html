@@ -4,6 +4,7 @@
 <input id="type-tab4" type="radio" name="attr_type_tab" class="type-tab" value="4" /><label for="type-tab4">Shell</label>
 <input id="type-tab5" type="radio" name="attr_type_tab" class="type-tab" value="5" /><label for="type-tab5">Vehc.</label>
 <button type="action" name="act_rollCombatDice">Roll CD</button>
+<button type="action" name="act_rollSkill">Roll Skill</button>
 <div id="type-PC">
 	<input id="tab1" type="radio" name="attr_tab" value="1" checked="checked"/><label for="tab1">MAIN</label>
 	<input id="tab2" type="radio" name="attr_tab" value="2"/><label for="tab2">TALENTS</label>
@@ -2081,18 +2082,23 @@
 			<label>{{skill}}</label>
 			{{#skill_exp}}
 			<label>, EXP </label>
-			<span class="attr-disp">{{skill_exp}}</span>
+			<span>{{skill_exp}}</span>
 			{{/skill_exp}}
 			{{#skill_foc}}
 			<label> FOC </label>
-			<span class="attr-disp">{{skill_foc}}</span>
+			<span>{{skill_foc}}</span>
 			{{/skill_foc}}
 		</div>
 		{{/skill}}
 
 		{{#attribute}}
 		<label>Attribute:</label>
-		<div><span class="attr-disp">{{attribute}}</span></div>
+		<div>
+			{{#attribute_name}}
+			<label>{{attribute_name}}, </label>
+			{{/attribute_name}}
+			<span>{{attribute}}</span>
+		</div>
 		{{/attribute}}
 
 		{{#ammo}}
@@ -2105,7 +2111,7 @@
 		{{/qualities}}
 		{{#roll}}
 		<label>Result:</label>
-		<span>{{roll}}</span>
+		<span>{{computed::roll}}</span>
 		{{/roll}}
 		{{#damage_roll}}
 		<div class="button">
@@ -3479,7 +3485,7 @@
 		openSheet();
 	});
 
-	function calcTotalAndEffect(rolls) {
+	function calcCombatDice(rolls) {
 		let results = {
 			sum: 0,
 			effect: 0
@@ -3503,17 +3509,51 @@
 	
 		return results;
 	}
+
+	function calcSkillRoll(rolls, tn, foc) {
+		let results = {
+			successes: 0
+		}
+
+		rolls.forEach(roll => {
+			if (roll <= tn) {
+				results.successes += 1;
+			}
+			if (roll <= foc) {
+				results.successes += 1;
+			}
+		});
+
+		return results;
+	}
 	
 	on('clicked:rollCombatDice', (info) => {
 		startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll1=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
 			
-			const computed = calcTotalAndEffect(allRolls.results.roll1.dice);
+			const computed = calcCombatDice(allRolls.results.roll1.dice);
 
 			const computedResults = {
 				roll1: computed.sum
 			};
 	
 			finishRoll(allRolls.rollId, computedResults);
+		});
+	});
+
+	on('clicked:rollSkill', (info) => {
+		startRoll("&{template:skillroll} {{header=Test roll}} {{subheader=Test roll}} {{skill=Acrobatics}} {{skill_exp=[[@{skill_acrobatics_exp}]]}} {{skill_foc=[[@{skill_acrobatics_foc}]]}} {{attribute_name=Agility}} {{attribute=[[@{Agility}]]}} {{roll=[[?{Number of dice|2}d20cf20cs1]]}} {{damage_roll=[Button](&#38;&#123;template:combatdice&#125; &#123;&#123;roll1=&#91;[5d6]&#93;&#125;&#125;)}}", (allRolls) => {
+			console.log(allRolls);
+			const tn = allRolls.results.skill_exp.result + allRolls.results.attribute.result;
+			const computed = calcSkillRoll(allRolls.results.roll.dice, tn, allRolls.results.skill_foc.result).successes;
+			console.log(computed);
+			const computedResults = {
+				roll: computed
+			};
+			
+			finishRoll(
+				allRolls.rollId,
+				computedResults
+			);
 		});
 	});
 </script>
