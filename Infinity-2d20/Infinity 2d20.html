@@ -4251,17 +4251,17 @@
 
 <rolltemplate class="sheet-rolltemplate-combatdice">
 	<div class="grid">
-		<h1>Damage roll</h1>
-		<h2>{{name}}</h2>
+		<h1>{{header}}</h1>
+		<h2>{{subheader}}</h2>
 		<div>
 			<label>Sum: </label>
-			<span>{{computed::effectCount}}</span>
+			<span>{{computed::roll1}}</span>
 			<label> + </label>
-			<span>{{fixedMod}}</span>
+			<span>{{modifier}}</span>
 		</div>
 		<div>
 			<label>Effect: </label>
-			<span>{{effectCount}}</span>
+			<span>{{roll1}}</span>
 		</div>
 	</div>
 </rolltemplate>
@@ -5665,15 +5665,12 @@
 	}
 	
 	on('clicked:rollCombatDice', (info) => {
-		startRoll("&{template:combatdice} {{name=Combat Dice}} {{effectCount=[[?{Number of dice|5}d6>6cf0]]}} {{fixedMod=[[?{Fixed mod|2}[Fixed modifier]]]}}", (allRolls) => {
+		startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll1=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
 			
-			const computed = calcTotalAndEffect(allRolls.results.effectCount.dice);
-
-			console.log(allRolls.results);
-			console.log(computed);
+			const computed = calcTotalAndEffect(allRolls.results.roll1.dice);
 
 			const computedResults = {
-				effectCount: computed.sum
+				roll1: computed.sum
 			};
 	
 			finishRoll(allRolls.rollId, computedResults);
