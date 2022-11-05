@@ -475,7 +475,9 @@
 						<td><input type="number" value="0" name="attr_skill_acrobatics_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_acrobatics_foc" /></td>
 						<td>
-							<button type="roll" name="roll_acrobatics" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Acrobatics Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Acrobatics}} {{skill_exp=@{skill_acrobatics_exp}}} {{skill_foc=@{skill_acrobatics_foc}}} {{attribute=?{Attribute|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute}]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute}]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute}]]-@{skill_acrobatics_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]cf<@{skill_acrobatics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_acrobatics_exp}+?{Attribute&amp;#125;]]-@{skill_acrobatics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
+							<button type="roll" name="roll_acrobatics" value="@{acrobatics_action}"></button>
+							<button type="action" name="act_acrobatics-action" class="hidden"></button>
+							<input type="hidden" name="attr_acrobatics_action" value="">
 							</button>
 						</td>
 					</tr>
@@ -4205,34 +4207,11 @@
 			{{#header}}{{header}}{{/header}}
 		</h1>
 		<h2>
-			{{#character_name}}{{character_name}}, {{/character_name}}
 			{{#subheader}}{{subheader}}{{/subheader}}
 		</h2>
 
-		{{#skill}}
-		<label>Skill:</label>
-		<div>
-			<label>{{skill}}</label>
-			{{#skill_exp}}
-			<label>, EXP </label>
-			<span>{{skill_exp}}</span>
-			{{/skill_exp}}
-			{{#skill_foc}}
-			<label> FOC </label>
-			<span>{{skill_foc}}</span>
-			{{/skill_foc}}
-		</div>
-		{{/skill}}
-
-		{{#attribute}}
-		<label>Attribute:</label>
-		<div>
-			{{#attribute_name}}
-			<label>{{attribute_name}}, </label>
-			{{/attribute_name}}
-			<span>{{attribute}}</span>
-		</div>
-		{{/attribute}}
+		<label>Target #:</label>
+		<span>{{target_number}}</span>
 
 		{{#ammo}}
 		<label>Ammo:</label>
@@ -4243,8 +4222,13 @@
 		<div><label>{{qualities}}</label></div>
 		{{/qualities}}
 		{{#roll}}
-		<label>Result:</label>
-		<span>{{computed::roll}}</span>
+		<label>Successes:</label>
+		<div>
+			<span>{{computed::roll}}</span>
+			{{#rollWasFumble() computed::roll}}
+			<label>(With complications)</label>
+			{{/rollWasFumble() computed::roll}}
+		</div>
 		{{/roll}}
 		{{#damage_roll}}
 		<div class="button">
@@ -5685,6 +5669,21 @@
 
 		return results;
 	}
+
+	on("sheet:opened change:character_name", function(eventInfo) {
+		const attrActions = [ // Attributes with associated roll buttons.
+			"acrobatics_action"
+		];
+
+		getAttrs(["character_name", ...attrActions], function(v) {
+			var attrsToChange = {};
+			attrActions.forEach(attr => {
+				let strAct = attr.replace('_','-');
+				attrsToChange[attr] = "%{" + v["character_name"] + `|${strAct}}`;
+			});
+			setAttrs(attrsToChange);
+		});
+	});
 	
 	on('clicked:rollCombatDice', (info) => {
 		startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll1=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
@@ -5699,12 +5698,13 @@
 		});
 	});
 
-	on('clicked:rollSkill', (info) => {
-		startRoll("&{template:skillroll} {{header=Test roll}} {{subheader=Test roll}} {{skill=Acrobatics}} {{skill_exp=[[@{skill_acrobatics_exp}]]}} {{skill_foc=[[@{skill_acrobatics_foc}]]}} {{attribute_name=Agility}} {{attribute=[[@{Agility}]]}} {{roll=[[?{Number of dice|2}d20cf20cs1]]}} {{damage_roll=[Button](&#38;&#123;template:combatdice&#125; &#123;&#123;roll1=&#91;[5d6]&#93;&#125;&#125;)}}", (allRolls) => {
-			console.log(allRolls);
-			const tn = allRolls.results.skill_exp.result + allRolls.results.attribute.result;
-			const computed = calcSkillRoll(allRolls.results.roll.dice, tn, allRolls.results.skill_foc.result).successes;
-			console.log(computed);
+	on('clicked:acrobatics-action', (info) => {
+		startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Agility,@{Agility}|Brawn,@{Brawn}}[Attribute]+@{skill_acrobatics_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_acrobatics_foc}]]]]}} {{header=Acrobatics Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_acrobatics_foc}]]}}", (allRolls) => {
+			const computed = calcSkillRoll(
+				allRolls.results.roll.dice, 
+				allRolls.results.target_number.result, 
+				allRolls.results.skill_foc.result
+			).successes;
 			const computedResults = {
 				roll: computed
 			};
