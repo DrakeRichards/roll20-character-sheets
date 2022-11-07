@@ -456,8 +456,9 @@
 						<td><input type="number" value="0" name="attr_skill_close_combat_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_close_combat_foc" /></td>
 						<td>
-							<button type="roll" name="roll_close_combat" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Close Combat Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Close Combat}} {{skill_exp=@{skill_close_combat_exp}}} {{skill_foc=@{skill_close_combat_foc}}} {{attribute=?{Attribute|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_close_combat_exp}+?{Attribute}]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute}]]-@{skill_close_combat_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+?{Attribute&amp;#125;]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_close_combat" value="@{close_combat_action}"></button>
+							<button type="action" name="act_close-combat-action" class="hidden"></button>
+							<input type="hidden" name="attr_close_combat_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -3469,7 +3470,7 @@
 		openSheet();
 	});
 
-	function calcCombatDice(rolls) {
+	const calcCombatDice = function (rolls) {
 		let results = {
 			sum: 0,
 			effect: 0
@@ -3492,39 +3493,7 @@
 		});
 	
 		return results;
-	}
-
-	function calcSkillRoll(rolls, tn, foc) {
-		let results = {
-			successes: 0
-		}
-
-		rolls.forEach(roll => {
-			if (roll <= tn) {
-				results.successes += 1;
-			}
-			if (roll <= foc) {
-				results.successes += 1;
-			}
-		});
-
-		return results;
-	}
-
-	on("sheet:opened change:character_name", function(eventInfo) {
-		const attrActions = [ // Attributes with associated roll buttons.
-			"acrobatics_action"
-		];
-
-		getAttrs(["character_name", ...attrActions], function(v) {
-			var attrsToChange = {};
-			attrActions.forEach(attr => {
-				let strAct = attr.replace('_','-');
-				attrsToChange[attr] = "%{" + v["character_name"] + `|${strAct}}`;
-			});
-			setAttrs(attrsToChange);
-		});
-	});
+	};
 	
 	on('clicked:rollCombatDice', (info) => {
 		startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll1=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
@@ -3539,21 +3508,38 @@
 		});
 	});
 
-	on('clicked:acrobatics-action', (info) => {
-		startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Agility,@{Agility}|Brawn,@{Brawn}}[Attribute]+@{skill_acrobatics_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_acrobatics_foc}]]]]}} {{header=Acrobatics Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_acrobatics_foc}]]}}", (allRolls) => {
-			const computed = calcSkillRoll(
-				allRolls.results.roll.dice, 
-				allRolls.results.target_number.result, 
-				allRolls.results.skill_foc.result
-			).successes;
-			const computedResults = {
-				roll: computed
-			};
-			
-			finishRoll(
-				allRolls.rollId,
-				computedResults
-			);
+	const updateActionButtons = function() {
+		const attrActions = [ // Attributes with associated roll buttons.
+			"acrobatics_action",
+			"close_combat_action"
+		];
+
+		getAttrs(["character_name", ...attrActions], function(v) {
+			var attrsToChange = {};
+			attrActions.forEach(attr => {
+				let strAct = attr.replaceAll('_','-');
+				attrsToChange[attr] = "%{" + v["character_name"] + `|${strAct}}`;
+			});
+			setAttrs(attrsToChange);
 		});
-	});
+	};
+
+	on("sheet:opened change:character_name", updateActionButtons);
+
+	const calcSkillRoll = function (rolls, tn, foc) {
+		let results = {
+			successes: 0
+		}
+
+		rolls.forEach(roll => {
+			if (roll <= tn) {
+				results.successes += 1;
+			}
+			if (roll <= foc) {
+				results.successes += 1;
+			}
+		});
+
+		return results;
+	};
 </script>
