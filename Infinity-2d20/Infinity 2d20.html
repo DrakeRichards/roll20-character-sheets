@@ -458,8 +458,9 @@
 							<span class="InputText">(+</span>
 							<input type="number" value="0" name="attr_agility_mod" />
 							<span class="InputText">)</span>
-							<button type="roll" name="roll_agility" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Agility Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{attribute=@{agility}}} {{roll=[[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{agility}]])),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{agility}]]-d20cs<[[@{agility}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{agility}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_agility" value="@{agility_action}"></button>
+							<button type="action" name="act_agility-action" class="hidden"></button>
+							<input type="hidden" name="attr_agility_action" value="">
 						</td>
 					</tr>
 					<tr class="SkillTableHeaderSub">
@@ -478,7 +479,6 @@
 							<button type="roll" name="roll_acrobatics" value="@{acrobatics_action}"></button>
 							<button type="action" name="act_acrobatics-action" class="hidden"></button>
 							<input type="hidden" name="attr_acrobatics_action" value="">
-							</button>
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -498,8 +498,9 @@
 						<td><input type="number" value="0" name="attr_skill_stealth_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_stealth_foc" /></td>
 						<td>
-							<button type="roll" name="roll_stealth" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Stealth Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Stealth}} {{skill_exp=@{skill_stealth_exp}}} {{skill_foc=@{skill_stealth_foc}}} {{attribute=?{Attribute|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_stealth_exp}+?{Attribute}]]-d20cs<[[@{skill_stealth_exp}+?{Attribute}]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute}]]-@{skill_stealth_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_stealth_exp}+?{Attribute&amp;#125;]]cf<@{skill_stealth_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_stealth_exp}+?{Attribute&amp;#125;]]-@{skill_stealth_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_stealth" value="@{stealth_action}"></button>
+							<button type="action" name="act_stealth-action" class="hidden"></button>
+							<input type="hidden" name="attr_stealth_action" value="">
 						</td>
 					</tr>
 				</table>
@@ -512,8 +513,9 @@
 							<span class="InputText">(+</span>
 							<input type="number" value="0" name="attr_awareness_mod" />
 							<span class="InputText">)</span>
-							<button type="roll" name="roll_awareness" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Awareness Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{attribute=@{awareness}}} {{roll=[[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{awareness}]])),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{awareness}]]-d20cs<[[@{awareness}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{awareness}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_awareness" value="@{awareness_action}"></button>
+							<button type="action" name="act_awareness-action" class="hidden"></button>
+							<input type="hidden" name="attr_awareness_action" value="">
 						</td>
 					</tr>
 					<tr class="SkillTableHeaderSub">
@@ -529,8 +531,9 @@
 						<td><input type="number" value="0" name="attr_skill_analysis_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_analysis_foc" /></td>
 						<td>
-							<button type="roll" name="roll_analysis" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Analysis Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Analysis}} {{skill_exp=@{skill_analysis_exp}}} {{skill_foc=@{skill_analysis_foc}}} {{attribute=?{Attribute|Awareness, @{awareness}|Agility, @{agility}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_analysis_exp}+?{Attribute}]]-d20cs<[[@{skill_analysis_exp}+?{Attribute}]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute}]]-@{skill_analysis_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_analysis_exp}+?{Attribute&amp;#125;]]cf<@{skill_analysis_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_analysis_exp}+?{Attribute&amp;#125;]]-@{skill_analysis_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_analysis" value="@{analysis_action}"></button>
+							<button type="action" name="act_analysis-action" class="hidden"></button>
+							<input type="hidden" name="attr_analysis_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -539,8 +542,9 @@
 						<td><input type="number" value="0" name="attr_skill_extraplanetary_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_extraplanetary_foc" /></td>
 						<td>
-							<button type="roll" name="roll_extraplanetary" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Extraplanetary Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Extraplanetary}} {{skill_exp=@{skill_extraplanetary_exp}}} {{skill_foc=@{skill_extraplanetary_foc}}} {{attribute=?{Attribute|Awareness, @{awareness}|Agility, @{agility}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute}]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute}]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute}]]-@{skill_extraplanetary_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]cf<@{skill_extraplanetary_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_extraplanetary_exp}+?{Attribute&amp;#125;]]-@{skill_extraplanetary_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_extraplanetary" value="@{extraplanetary_action}"></button>
+							<button type="action" name="act_extraplanetary-action" class="hidden"></button>
+							<input type="hidden" name="attr_extraplanetary_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -549,8 +553,9 @@
 						<td><input type="number" value="0" name="attr_skill_observation_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_observation_foc" /></td>
 						<td>
-							<button type="roll" name="roll_observation" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Observation Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Observation}} {{skill_exp=@{skill_observation_exp}}} {{skill_foc=@{skill_observation_foc}}} {{attribute=?{Attribute|Awareness, @{awareness}|Agility, @{agility}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_observation_exp}+?{Attribute}]]-d20cs<[[@{skill_observation_exp}+?{Attribute}]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_observation_exp}+?{Attribute}]]-@{skill_observation_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_observation_exp}+?{Attribute&amp;#125;]]cf<@{skill_observation_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_observation_exp}+?{Attribute&amp;#125;]]-@{skill_observation_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_observation" value="@{observation_action}"></button>
+							<button type="action" name="act_observation-action" class="hidden"></button>
+							<input type="hidden" name="attr_observation_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -559,8 +564,9 @@
 						<td><input type="number" value="0" name="attr_skill_survival_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_survival_foc" /></td>
 						<td>
-							<button type="roll" name="roll_survival" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Survival Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Survival}} {{skill_exp=@{skill_survival_exp}}} {{skill_foc=@{skill_survival_foc}}} {{attribute=?{Attribute|Awareness, @{awareness}|Agility, @{agility}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_survival_exp}+?{Attribute}]]-d20cs<[[@{skill_survival_exp}+?{Attribute}]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_survival_exp}+?{Attribute}]]-@{skill_survival_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_survival_exp}+?{Attribute&amp;#125;]]cf<@{skill_survival_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_survival_exp}+?{Attribute&amp;#125;]]-@{skill_survival_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_survival" value="@{survival_action}"></button>
+							<button type="action" name="act_survival-action" class="hidden"></button>
+							<input type="hidden" name="attr_survival_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -569,8 +575,9 @@
 						<td><input type="number" value="0" name="attr_skill_thievery_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_thievery_foc" /></td>
 						<td>
-							<button type="roll" name="roll_thievery" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Thievery Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Thievery}} {{skill_exp=@{skill_thievery_exp}}} {{skill_foc=@{skill_thievery_foc}}} {{attribute=?{Attribute|Awareness, @{awareness}|Agility, @{agility}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_thievery_exp}+?{Attribute}]]-d20cs<[[@{skill_thievery_exp}+?{Attribute}]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute}]]-@{skill_thievery_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_thievery_exp}+?{Attribute&amp;#125;]]cf<@{skill_thievery_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_thievery_exp}+?{Attribute&amp;#125;]]-@{skill_thievery_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_thievery" value="@{thievery_action}"></button>
+							<button type="action" name="act_thievery-action" class="hidden"></button>
+							<input type="hidden" name="attr_thievery_action" value="">
 						</td>
 					</tr>
 				</table>
@@ -583,8 +590,9 @@
 							<span class="InputText">(+</span>
 							<input type="number" value="0" name="attr_brawn_mod" />
 							<span class="InputText">)</span>
-							<button type="roll" name="roll_brawn" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Brawn Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{attribute=@{brawn}}} {{roll=[[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{brawn}]])),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{brawn}]]-d20cs<[[@{brawn}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{brawn}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_brawn" value="@{brawn_action}"></button>
+							<button type="action" name="act_brawn-action" class="hidden"></button>
+							<input type="hidden" name="attr_brawn_action" value="">
 						</td>
 					</tr>
 					<tr class="SkillTableHeaderSub">
@@ -600,8 +608,9 @@
 						<td><input type="number" value="0" name="attr_skill_athletics_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_athletics_foc" /></td>
 						<td>
-							<button type="roll" name="roll_athletics" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Athletics Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Athletics}} {{skill_exp=@{skill_athletics_exp}}} {{skill_foc=@{skill_athletics_foc}}} {{attribute=?{Attribute|Brawn, @{brawn}|Agility, @{agility}|Awareness, @{awareness}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_athletics_exp}+?{Attribute}]]-d20cs<[[@{skill_athletics_exp}+?{Attribute}]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute}]]-@{skill_athletics_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_athletics_exp}+?{Attribute&amp;#125;]]cf<@{skill_athletics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_athletics_exp}+?{Attribute&amp;#125;]]-@{skill_athletics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_athletics" value="@{athletics_action}"></button>
+							<button type="action" name="act_athletics-action" class="hidden"></button>
+							<input type="hidden" name="attr_athletics_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -610,8 +619,9 @@
 						<td><input type="number" value="0" name="attr_skill_resistance_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_resistance_foc" /></td>
 						<td>
-							<button type="roll" name="roll_resistance" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Resistance Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Resistance}} {{skill_exp=@{skill_resistance_exp}}} {{skill_foc=@{skill_resistance_foc}}} {{attribute=?{Attribute|Brawn, @{brawn}|Agility, @{agility}|Awareness, @{awareness}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_resistance_exp}+?{Attribute}]]-d20cs<[[@{skill_resistance_exp}+?{Attribute}]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute}]]-@{skill_resistance_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_resistance_exp}+?{Attribute&amp;#125;]]cf<@{skill_resistance_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_resistance_exp}+?{Attribute&amp;#125;]]-@{skill_resistance_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_resistance" value="@{resistance_action}"></button>
+							<button type="action" name="act_resistance-action" class="hidden"></button>
+							<input type="hidden" name="attr_resistance_action" value="">
 						</td>
 					</tr>
 				</table>
@@ -624,8 +634,9 @@
 							<span class="InputText">(+</span>
 							<input type="number" value="0" name="attr_coordination_mod" />
 							<span class="InputText">)</span>
-							<button type="roll" name="roll_coordination" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Coordination Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{attribute=@{coordination}}} {{roll=[[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{coordination}]])),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{coordination}]]-d20cs<[[@{coordination}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{coordination}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_coordination" value="@{coordination_action}"></button>
+							<button type="action" name="act_coordination-action" class="hidden"></button>
+							<input type="hidden" name="attr_coordination_action" value="">
 						</td>
 					</tr>
 					<tr class="SkillTableHeaderSub">
@@ -641,8 +652,9 @@
 						<td><input type="number" value="0" name="attr_skill_ballistics_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_ballistics_foc" /></td>
 						<td>
-							<button type="roll" name="roll_ballistics" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Ballistics Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Ballistics}} {{skill_exp=@{skill_ballistics_exp}}} {{skill_foc=@{skill_ballistics_foc}}} {{attribute=?{Attribute|Coordination, @{coordination}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_ballistics_exp}+?{Attribute}]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute}]]-@{skill_ballistics_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+?{Attribute&amp;#125;]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_ballistics" value="@{ballistics_action}"></button>
+							<button type="action" name="act_ballistics-action" class="hidden"></button>
+							<input type="hidden" name="attr_ballistics_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -651,8 +663,9 @@
 						<td><input type="number" value="0" name="attr_skill_pilot_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_pilot_foc" /></td>
 						<td>
-							<button type="roll" name="roll_pilot" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Pilot Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Pilot}} {{skill_exp=@{skill_pilot_exp}}} {{skill_foc=@{skill_pilot_foc}}} {{attribute=?{Attribute|Coordination, @{coordination}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_pilot_exp}+?{Attribute}]]-d20cs<[[@{skill_pilot_exp}+?{Attribute}]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute}]]-@{skill_pilot_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_pilot_exp}+?{Attribute&amp;#125;]]cf<@{skill_pilot_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_pilot_exp}+?{Attribute&amp;#125;]]-@{skill_pilot_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_pilot" value="@{pilot_action}"></button>
+							<button type="action" name="act_pilot-action" class="hidden"></button>
+							<input type="hidden" name="attr_pilot_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -661,8 +674,9 @@
 						<td><input type="number" value="0" name="attr_skill_spacecraft_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_spacecraft_foc" /></td>
 						<td>
-							<button type="roll" name="roll_spacecraft" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Spacecraft Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Spacecraft}} {{skill_exp=@{skill_spacecraft_exp}}} {{skill_foc=@{skill_spacecraft_foc}}} {{attribute=?{Attribute|Coordination, @{coordination}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Intelligence, @{intelligence}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute}]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute}]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute}]]-@{skill_spacecraft_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]cf<@{skill_spacecraft_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_spacecraft_exp}+?{Attribute&amp;#125;]]-@{skill_spacecraft_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_spacecraft" value="@{spacecraft_action}"></button>
+							<button type="action" name="act_spacecraft-action" class="hidden"></button>
+							<input type="hidden" name="attr_spacecraft_action" value="">
 						</td>
 					</tr>
 				</table>
@@ -675,8 +689,9 @@
 							<span class="InputText">(+</span>
 							<input type="number" value="0" name="attr_intelligence_mod" />
 							<span class="InputText">)</span>
-							<button type="roll" name="roll_intelligence" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Intelligence Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{attribute=@{intelligence}}} {{roll=[[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{intelligence}]])),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{intelligence}]]-d20cs<[[@{intelligence}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{intelligence}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_intelligence" value="@{intelligence_action}"></button>
+							<button type="action" name="act_intelligence-action" class="hidden"></button>
+							<input type="hidden" name="attr_intelligence_action" value="">
 						</td>
 					</tr>
 					<tr class="SkillTableHeaderSub">
@@ -692,8 +707,9 @@
 						<td><input type="number" value="0" name="attr_skill_education_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_education_foc" /></td>
 						<td>
-							<button type="roll" name="roll_education" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Education Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Education}} {{skill_exp=@{skill_education_exp}}} {{skill_foc=@{skill_education_foc}}} {{attribute=?{Attribute|Intelligence, @{intelligence}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_education_exp}+?{Attribute}]]-d20cs<[[@{skill_education_exp}+?{Attribute}]]cf<@{skill_education_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_education_exp}+?{Attribute}]]-@{skill_education_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_education_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_education_exp}+?{Attribute&amp;#125;]]cf<@{skill_education_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_education_exp}+?{Attribute&amp;#125;]]-@{skill_education_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_education" value="@{education_action}"></button>
+							<button type="action" name="act_education-action" class="hidden"></button>
+							<input type="hidden" name="attr_education_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -702,8 +718,9 @@
 						<td><input type="number" value="0" name="attr_skill_hacking_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_hacking_foc" /></td>
 						<td>
-							<button type="roll" name="roll_hacking" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Hacking Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Hacking}} {{skill_exp=@{skill_hacking_exp}}} {{skill_foc=@{skill_hacking_foc}}} {{attribute=?{Attribute|Intelligence, @{intelligence}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_hacking_exp}+?{Attribute}]]-d20cs<[[@{skill_hacking_exp}+?{Attribute}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute}]]-@{skill_hacking_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_hacking_exp}+?{Attribute&amp;#125;]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+?{Attribute&amp;#125;]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_hacking" value="@{hacking_action}"></button>
+							<button type="action" name="act_hacking-action" class="hidden"></button>
+							<input type="hidden" name="attr_hacking_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -712,8 +729,9 @@
 						<td><input type="number" value="0" name="attr_skill_medicine_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_medicine_foc" /></td>
 						<td>
-							<button type="roll" name="roll_medicine" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Medicine Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Medicine}} {{skill_exp=@{skill_medicine_exp}}} {{skill_foc=@{skill_medicine_foc}}} {{attribute=?{Attribute|Intelligence, @{intelligence}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_medicine_exp}+?{Attribute}]]-d20cs<[[@{skill_medicine_exp}+?{Attribute}]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute}]]-@{skill_medicine_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_medicine_exp}+?{Attribute&amp;#125;]]cf<@{skill_medicine_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_medicine_exp}+?{Attribute&amp;#125;]]-@{skill_medicine_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_medicine" value="@{medicine_action}"></button>
+							<button type="action" name="act_medicine-action" class="hidden"></button>
+							<input type="hidden" name="attr_medicine_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -722,8 +740,9 @@
 						<td><input type="number" value="0" name="attr_skill_psychology_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_psychology_foc" /></td>
 						<td>
-							<button type="roll" name="roll_psychology" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Psychology Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Psychology}} {{skill_exp=@{skill_psychology_exp}}} {{skill_foc=@{skill_psychology_foc}}} {{attribute=?{Attribute|Intelligence, @{intelligence}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_psychology_exp}+?{Attribute}]]-d20cs<[[@{skill_psychology_exp}+?{Attribute}]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute}]]-@{skill_psychology_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_psychology_exp}+?{Attribute&amp;#125;]]cf<@{skill_psychology_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_psychology_exp}+?{Attribute&amp;#125;]]-@{skill_psychology_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_psychology" value="@{psychology_action}"></button>
+							<button type="action" name="act_psychology-action" class="hidden"></button>
+							<input type="hidden" name="attr_psychology_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -732,8 +751,9 @@
 						<td><input type="number" value="0" name="attr_skill_science_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_science_foc" /></td>
 						<td>
-							<button type="roll" name="roll_science" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Science Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Science}} {{skill_exp=@{skill_science_exp}}} {{skill_foc=@{skill_science_foc}}} {{attribute=?{Attribute|Intelligence, @{intelligence}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_science_exp}+?{Attribute}]]-d20cs<[[@{skill_science_exp}+?{Attribute}]]cf<@{skill_science_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_science_exp}+?{Attribute}]]-@{skill_science_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_science_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_science_exp}+?{Attribute&amp;#125;]]cf<@{skill_science_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_science_exp}+?{Attribute&amp;#125;]]-@{skill_science_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_science" value="@{science_action}"></button>
+							<button type="action" name="act_science-action" class="hidden"></button>
+							<input type="hidden" name="attr_science_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -742,8 +762,9 @@
 						<td><input type="number" value="0" name="attr_skill_tech_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_tech_foc" /></td>
 						<td>
-							<button type="roll" name="roll_tech" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Tech Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Tech}} {{skill_exp=@{skill_tech_exp}}} {{skill_foc=@{skill_tech_foc}}} {{attribute=?{Attribute|Intelligence, @{intelligence}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Personality, @{personality}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_tech_exp}+?{Attribute}]]-d20cs<[[@{skill_tech_exp}+?{Attribute}]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_tech_exp}+?{Attribute}]]-@{skill_tech_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_tech_exp}+?{Attribute&amp;#125;]]cf<@{skill_tech_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_tech_exp}+?{Attribute&amp;#125;]]-@{skill_tech_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_tech" value="@{tech_action}"></button>
+							<button type="action" name="act_tech-action" class="hidden"></button>
+							<input type="hidden" name="attr_tech_action" value="">
 						</td>
 					</tr>
 				</table>
@@ -756,8 +777,9 @@
 							<span class="InputText">(+</span>
 							<input type="number" value="0" name="attr_personality_mod" />
 							<span class="InputText">)</span>
-							<button type="roll" name="roll_personality" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Personality Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{attribute=@{personality}}} {{roll=[[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{personality}]])),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{personality}]]-d20cs<[[@{personality}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{personality}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_personality" value="@{personality_action}"></button>
+							<button type="action" name="act_personality-action" class="hidden"></button>
+							<input type="hidden" name="attr_personality_action" value="">
 						</td>
 					</tr>
 					<tr class="SkillTableHeaderSub">
@@ -773,8 +795,9 @@
 						<td><input type="number" value="0" name="attr_skill_animal_handling_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_animal_handling_foc" /></td>
 						<td>
-							<button type="roll" name="roll_animal_handling" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Animal Handling Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Animal Handling}} {{skill_exp=@{skill_animal_handling_exp}}} {{skill_foc=@{skill_animal_handling_foc}}} {{attribute=?{Attribute|Personality, @{personality}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute}]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute}]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute}]]-@{skill_animal_handling_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]cf<@{skill_animal_handling_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_animal_handling_exp}+?{Attribute&amp;#125;]]-@{skill_animal_handling_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_animal_handling" value="@{animal_handling_action}"></button>
+							<button type="action" name="act_animal-handling-action" class="hidden"></button>
+							<input type="hidden" name="attr_animal_handling_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -783,8 +806,9 @@
 						<td><input type="number" value="0" name="attr_skill_command_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_command_foc" /></td>
 						<td>
-							<button type="roll" name="roll_command" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Command Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Command}} {{skill_exp=@{skill_command_exp}}} {{skill_foc=@{skill_command_foc}}} {{attribute=?{Attribute|Personality, @{personality}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_command_exp}+?{Attribute}]]-d20cs<[[@{skill_command_exp}+?{Attribute}]]cf<@{skill_command_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_command_exp}+?{Attribute}]]-@{skill_command_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_command_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_command_exp}+?{Attribute&amp;#125;]]cf<@{skill_command_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_command_exp}+?{Attribute&amp;#125;]]-@{skill_command_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_command" value="@{command_action}"></button>
+							<button type="action" name="act_command-action" class="hidden"></button>
+							<input type="hidden" name="attr_command_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -793,8 +817,9 @@
 						<td><input type="number" value="0" name="attr_skill_lifestyle_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_lifestyle_foc" /></td>
 						<td>
-							<button type="roll" name="roll_lifestyle" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Lifestyle Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Lifestyle}} {{skill_exp=@{skill_lifestyle_exp}}} {{skill_foc=@{skill_lifestyle_foc}}} {{attribute=?{Attribute|Personality, @{personality}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute}]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute}]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute}]]-@{skill_lifestyle_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]cf<@{skill_lifestyle_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_lifestyle_exp}+?{Attribute&amp;#125;]]-@{skill_lifestyle_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_lifestyle" value="@{lifestyle_action}"></button>
+							<button type="action" name="act_lifestyle-action" class="hidden"></button>
+							<input type="hidden" name="attr_lifestyle_action" value="">
 						</td>
 					</tr>
 					<tr class="Skill">
@@ -803,8 +828,9 @@
 						<td><input type="number" value="0" name="attr_skill_persuade_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_persuade_foc" /></td>
 						<td>
-							<button type="roll" name="roll_persuade" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Persuade Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Persuade}} {{skill_exp=@{skill_persuade_exp}}} {{skill_foc=@{skill_persuade_foc}}} {{attribute=?{Attribute|Personality, @{personality}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Willpower, @{willpower}}}} {{roll=[[{{ceil(([[@{skill_persuade_exp}+?{Attribute}]]-d20cs<[[@{skill_persuade_exp}+?{Attribute}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute}]]-@{skill_persuade_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_persuade_exp}+?{Attribute&amp;#125;]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+?{Attribute&amp;#125;]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_persuade" value="@{persuade_action}"></button>
+							<button type="action" name="act_persuade-action" class="hidden"></button>
+							<input type="hidden" name="attr_persuade_action" value="">
 						</td>
 					</tr>
 				</table>
@@ -817,8 +843,9 @@
 							<span class="InputText">(+</span>
 							<input type="number" value="0" name="attr_willpower_mod" />
 							<span class="InputText">)</span>
-							<button type="roll" name="roll_willpower" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Willpower Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{attribute=@{willpower}}} {{roll=[[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{willpower}]])),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{willpower}]]-d20cs<[[@{willpower}]]cf<0cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{willpower}]]))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_willpower" value="@{willpower_action}"></button>
+							<button type="action" name="act_willpower-action" class="hidden"></button>
+							<input type="hidden" name="attr_willpower_action" value="">
 						</td>
 					</tr>
 					<tr class="SkillTableHeaderSub">
@@ -834,8 +861,9 @@
 						<td><input type="number" value="0" name="attr_skill_discipline_exp" /></td>
 						<td><input type="number" value="0" name="attr_skill_discipline_foc" /></td>
 						<td>
-							<button type="roll" name="roll_discipline" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=Discipline Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Discipline}} {{skill_exp=@{skill_discipline_exp}}} {{skill_foc=@{skill_discipline_foc}}} {{attribute=?{Attribute|Willpower, @{willpower}|Agility, @{agility}|Awareness, @{awareness}|Brawn, @{brawn}|Coordination, @{coordination}|Intelligence, @{intelligence}|Personality, @{personality}}}} {{roll=[[{{ceil(([[@{skill_discipline_exp}+?{Attribute}]]-d20cs<[[@{skill_discipline_exp}+?{Attribute}]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute}]]-@{skill_discipline_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{skill_discipline_exp}+?{Attribute&amp;#125;]]cf<@{skill_discipline_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_discipline_exp}+?{Attribute&amp;#125;]]-@{skill_discipline_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-							</button>
+							<button type="roll" name="roll_discipline" value="@{discipline_action}"></button>
+							<button type="action" name="act_discipline-action" class="hidden"></button>
+							<input type="hidden" name="attr_discipline_action" value="">
 						</td>
 					</tr>
 				</table>
@@ -5669,8 +5697,37 @@
 
 	const updateActionButtons = function() {
 		const attrActions = [ // Attributes with associated roll buttons.
-			"acrobatics_action",
-			"close_combat_action"
+			'agility_action',
+			'acrobatics_action',
+			'close_combat_action',
+			'stealth_action',
+			'awareness_action',
+			'analysis_action',
+			'extraplanetary_action',
+			'observation_action',
+			'survival_action',
+			'thievery_action',
+			'brawn_action',
+			'athletics_action',
+			'resistance_action',
+			'coordination_action',
+			'ballistics_action',
+			'pilot_action',
+			'spacecraft_action',
+			'intelligence_action',
+			'education_action',
+			'hacking_action',
+			'medicine_action',
+			'psychology_action',
+			'science_action',
+			'tech_action',
+			'personality_action',
+			'animal_handling_action',
+			'command_action',
+			'lifestyle_action',
+			'persuade_action',
+			'willpower_action',
+			'discipline_action'
 		];
 
 		getAttrs(["character_name", ...attrActions], function(v) {
@@ -5701,4 +5758,592 @@
 
 		return results;
 	};
+    // Agility
+    on("clicked:agility-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[@{agility}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Agility Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Acrobatics
+    on("clicked:acrobatics-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_acrobatics_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_acrobatics_foc}]]]]}} {{header=Acrobatics Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_acrobatics_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Close Combat
+    on("clicked:close-combat-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_close_combat_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_close_combat_foc}]]]]}} {{header=Close Combat Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_close_combat_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Stealth
+    on("clicked:stealth-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_stealth_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_stealth_foc}]]]]}} {{header=Stealth Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_stealth_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Awareness
+    on("clicked:awareness-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[@{awareness}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Awareness Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Analysis
+    on("clicked:analysis-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_analysis_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_analysis_foc}]]]]}} {{header=Analysis Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_analysis_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Extraplanetary
+    on("clicked:extraplanetary-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_extraplanetary_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_extraplanetary_foc}]]]]}} {{header=Extraplanetary Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_extraplanetary_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Observation
+    on("clicked:observation-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_observation_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_observation_foc}]]]]}} {{header=Observation Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_observation_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Survival
+    on("clicked:survival-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_survival_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_survival_foc}]]]]}} {{header=Survival Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_survival_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Thievery
+    on("clicked:thievery-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_thievery_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_thievery_foc}]]]]}} {{header=Thievery Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_thievery_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Brawn
+    on("clicked:brawn-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[@{brawn}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Brawn Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Athletics
+    on("clicked:athletics-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Brawn,@{brawn}|Agility,@{agility}|Awareness,@{awareness}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_athletics_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_athletics_foc}]]]]}} {{header=Athletics Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_athletics_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Resistance
+    on("clicked:resistance-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Brawn,@{brawn}|Agility,@{agility}|Awareness,@{awareness}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_resistance_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_resistance_foc}]]]]}} {{header=Resistance Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_resistance_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Coordination
+    on("clicked:coordination-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[@{coordination}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Coordination Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Ballistics
+    on("clicked:ballistics-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_ballistics_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_ballistics_foc}]]]]}} {{header=Ballistics Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_ballistics_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Pilot
+    on("clicked:pilot-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_pilot_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_pilot_foc}]]]]}} {{header=Pilot Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_pilot_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Spacecraft
+    on("clicked:spacecraft-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_spacecraft_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_spacecraft_foc}]]]]}} {{header=Spacecraft Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_spacecraft_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Intelligence
+    on("clicked:intelligence-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[@{intelligence}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Intelligence Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Education
+    on("clicked:education-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_education_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_education_foc}]]]]}} {{header=Education Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_education_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Hacking
+    on("clicked:hacking-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_hacking_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_hacking_foc}]]]]}} {{header=Hacking Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_hacking_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Medicine
+    on("clicked:medicine-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_medicine_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_medicine_foc}]]]]}} {{header=Medicine Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_medicine_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Psychology
+    on("clicked:psychology-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_psychology_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_psychology_foc}]]]]}} {{header=Psychology Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_psychology_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Science
+    on("clicked:science-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_science_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_science_foc}]]]]}} {{header=Science Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_science_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Tech
+    on("clicked:tech-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_tech_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_tech_foc}]]]]}} {{header=Tech Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_tech_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Personality
+    on("clicked:personality-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[@{personality}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Personality Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Animal Handling
+    on("clicked:animal-handling-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}[Attribute]+@{skill_animal_handling_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_animal_handling_foc}]]]]}} {{header=Animal Handling Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_animal_handling_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Command
+    on("clicked:command-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}[Attribute]+@{skill_command_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_command_foc}]]]]}} {{header=Command Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_command_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Lifestyle
+    on("clicked:lifestyle-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}[Attribute]+@{skill_lifestyle_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_lifestyle_foc}]]]]}} {{header=Lifestyle Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_lifestyle_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Persuade
+    on("clicked:persuade-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}[Attribute]+@{skill_persuade_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_persuade_foc}]]]]}} {{header=Persuade Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_persuade_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Willpower
+    on("clicked:willpower-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[@{willpower}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Willpower Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
+
+    // Discipline
+    on("clicked:discipline-action", (info) => {
+        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Willpower,@{willpower|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}}}[Attribute]+@{skill_discipline_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_discipline_foc}]]]]}} {{header=Discipline Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_discipline_foc}]]}}", (allRolls) => {
+            const computed = calcSkillRoll(
+                allRolls.results.roll.dice, 
+                allRolls.results.target_number.result, 
+                allRolls.results.skill_foc.result
+            ).successes;
+            const computedResults = {
+                roll: computed
+            };
+            
+            finishRoll(
+                allRolls.rollId,
+                computedResults
+            );
+        });
+    });
 </script>
