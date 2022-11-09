@@ -1483,13 +1483,13 @@
 					<td style="width:14%" class="StatLabelSub">WIL</td>
 				</tr>
 				<tr>
-					<td class="StatInput"><input type="text" name="attr_npc_agility" /><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_agility_mod" /><span class="InputText">)</span></td>
-					<td class="StatInput"><input type="text" name="attr_npc_awareness" /><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_awareness_mod" /><span class="InputText">)</span></td>
-					<td class="StatInput"><input type="text" name="attr_npc_brawn" /><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_brawn_mod" /><span class="InputText">)</span></td>
-					<td class="StatInput"><input type="text" name="attr_npc_coordination" /><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_coordination_mod" /><span class="InputText">)</span></td>
-					<td class="StatInput"><input type="text" name="attr_npc_intelligence" /><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_intelligence_mod" /><span class="InputText">)</span></td>
-					<td class="StatInput"><input type="text" name="attr_npc_personality" /><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_personality_mod" /><span class="InputText">)</span></td>
-					<td class="StatInput"><input type="text" name="attr_npc_willpower" /><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_willpower_mod" /><span class="InputText">)</span></td>
+					<td class="StatInput"><input type="text" name="attr_npc_agility" value="0"/><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_agility_mod" /><span class="InputText">)</span></td>
+					<td class="StatInput"><input type="text" name="attr_npc_awareness" value="0"/><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_awareness_mod" /><span class="InputText">)</span></td>
+					<td class="StatInput"><input type="text" name="attr_npc_brawn" value="0"/><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_brawn_mod" /><span class="InputText">)</span></td>
+					<td class="StatInput"><input type="text" name="attr_npc_coordination" value="0"/><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_coordination_mod" /><span class="InputText">)</span></td>
+					<td class="StatInput"><input type="text" name="attr_npc_intelligence" value="0"/><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_intelligence_mod" /><span class="InputText">)</span></td>
+					<td class="StatInput"><input type="text" name="attr_npc_personality" value="0"/><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_personality_mod" /><span class="InputText">)</span></td>
+					<td class="StatInput"><input type="text" name="attr_npc_willpower" value="0"/><span class="InputText">(+</span><input type="number" value="0" name="attr_npc_willpower_mod" /><span class="InputText">)</span></td>
 				</tr>
 			</table>
 			<table class="NPC expertise">
@@ -1499,48 +1499,54 @@
 				</tr>
 				<tr>
 					<th>Combat</th>
-					<td class="StatInput"><input type="number" name="attr_npc_combat_exp" /></td>
-					<td class="StatInput"><input type="number" name="attr_npc_combat_foc" /></td>
+					<td class="StatInput"><input type="number" name="attr_npc_combat_exp" value="0"/></td>
+					<td class="StatInput"><input type="number" name="attr_npc_combat_foc" value="0"/></td>
 					<td style="background-color:white">
-						<button type="roll" name="attr_npc_roll_combat" value="&amp;{template:skillroll} {{npc_name=@{npc_name}}} {{header=Combat Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Combat}} {{EXP=@{npc_combat_exp}}} {{FOC=@{npc_combat_foc}}} {{attribute=?{Attribute|Agility, @{npc_agility}|Awareness, @{npc_awareness}|Brawn, @{npc_brawn}|Coordination, @{npc_coordination}|Intelligence, @{npc_intelligence}|Personality, @{npc_personality}|Willpower, @{npc_willpower}}}} {{roll=[[{{ceil(([[@{npc_combat_exp}+?{Attribute}]]-d20cs<[[@{npc_combat_exp}+?{Attribute}]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{npc_combat_exp}+?{Attribute}]]-@{npc_combat_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_combat_exp}+?{Attribute&amp;#125;]]cf<@{npc_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_combat_exp}+?{Attribute&amp;#125;]]-@{npc_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-						</button>
+						<button type="roll" name="roll_npc_combat" value="@{npc_combat_action}"></button>
+						<button type="action" name="act_npc-combat-action" class="hidden"></button>
+						<input type="hidden" name="attr_npc_combat_action" value="">
 					</td>
 					<th>Movement</th>
-					<td class="StatInput"><input type="number" name="attr_npc_movement_exp" /></td>
-					<td class="StatInput"><input type="number" name="attr_npc_movement_foc" /></td>
+					<td class="StatInput"><input type="number" name="attr_npc_movement_exp" value="0"/></td>
+					<td class="StatInput"><input type="number" name="attr_npc_movement_foc" value="0"/></td>
 					<td style="background-color:white">
-						<button type="roll" name="attr_npc_roll_movement" value="&amp;{template:skillroll} {{npc_name=@{npc_name}}} {{header=Movement Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Movement}} {{EXP=@{npc_movement_exp}}} {{FOC=@{npc_movement_foc}}} {{attribute=?{Attribute|Agility, @{npc_agility}|Awareness, @{npc_awareness}|Brawn, @{npc_brawn}|Coordination, @{npc_coordination}|Intelligence, @{npc_intelligence}|Personality, @{npc_personality}|Willpower, @{npc_willpower}}}} {{roll=[[{{ceil(([[@{npc_movement_exp}+?{Attribute}]]-d20cs<[[@{npc_movement_exp}+?{Attribute}]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{npc_movement_exp}+?{Attribute}]]-@{npc_movement_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_movement_exp}+?{Attribute&amp;#125;]]cf<@{npc_movement_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_movement_exp}+?{Attribute&amp;#125;]]-@{npc_movement_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-						</button>
+						<button type="roll" name="roll_npc_movement" value="@{npc_movement_action}"></button>
+						<button type="action" name="act_npc-movement-action" class="hidden"></button>
+						<input type="hidden" name="attr_npc_movement_action" value="">
 					</td>
 					<th>Social</th>
-					<td class="StatInput"><input type="number" name="attr_npc_social_exp" /></td>
-					<td class="StatInput"><input type="number" name="attr_npc_social_foc" /></td>
+					<td class="StatInput"><input type="number" name="attr_npc_social_exp" value="0"/></td>
+					<td class="StatInput"><input type="number" name="attr_npc_social_foc" value="0"/></td>
 					<td style="background-color:white">
-						<button type="roll" name="attr_npc_roll_social" value="&amp;{template:skillroll} {{npc_name=@{npc_name}}} {{header=Social Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Social}} {{EXP=@{npc_social_exp}}} {{FOC=@{npc_social_foc}}} {{attribute=?{Attribute|Agility, @{npc_agility}|Awareness, @{npc_awareness}|Brawn, @{npc_brawn}|Coordination, @{npc_coordination}|Intelligence, @{npc_intelligence}|Personality, @{npc_personality}|Willpower, @{npc_willpower}}}} {{roll=[[{{ceil(([[@{npc_social_exp}+?{Attribute}]]-d20cs<[[@{npc_social_exp}+?{Attribute}]]cf<@{npc_social_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{npc_social_exp}+?{Attribute}]]-@{npc_social_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_social_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_social_exp}+?{Attribute&amp;#125;]]cf<@{npc_social_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_social_exp}+?{Attribute&amp;#125;]]-@{npc_social_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-						</button>
+						<button type="roll" name="roll_npc_social" value="@{npc_social_action}"></button>
+						<button type="action" name="act_npc-social-action" class="hidden"></button>
+						<input type="hidden" name="attr_npc_social_action" value="">
 					</td>
 				</tr>
 				<tr>
 					<th>Fortitude</th>
-					<td class="StatInput"><input type="number" name="attr_npc_fortitude_exp" /></td>
-					<td class="StatInput"><input type="number" name="attr_npc_fortitude_foc" /></td>
+					<td class="StatInput"><input type="number" name="attr_npc_fortitude_exp" value="0"/></td>
+					<td class="StatInput"><input type="number" name="attr_npc_fortitude_foc" value="0"/></td>
 					<td style="background-color:white">
-						<button type="roll" name="attr_npc_roll_fortitude" value="&amp;{template:skillroll} {{npc_name=@{npc_name}}} {{header=Fortitude Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Fortitude}} {{EXP=@{npc_fortitude_exp}}} {{FOC=@{npc_fortitude_foc}}} {{attribute=?{Attribute|Agility, @{npc_agility}|Awareness, @{npc_awareness}|Brawn, @{npc_brawn}|Coordination, @{npc_coordination}|Intelligence, @{npc_intelligence}|Personality, @{npc_personality}|Willpower, @{npc_willpower}}}} {{roll=[[{{ceil(([[@{npc_fortitude_exp}+?{Attribute}]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute}]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute}]]-@{npc_fortitude_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]cf<@{npc_fortitude_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_fortitude_exp}+?{Attribute&amp;#125;]]-@{npc_fortitude_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-						</button>
+						<button type="roll" name="roll_npc_fortitude" value="@{npc_fortitude_action}"></button>
+						<button type="action" name="act_npc-fortitude-action" class="hidden"></button>
+						<input type="hidden" name="attr_npc_fortitude_action" value="">
 					</td>
 					<th>Senses</th>
-					<td class="StatInput"><input type="number" name="attr_npc_senses_exp" /></td>
-					<td class="StatInput"><input type="number" name="attr_npc_senses_foc" /></td>
+					<td class="StatInput"><input type="number" name="attr_npc_senses_exp" value="0"/></td>
+					<td class="StatInput"><input type="number" name="attr_npc_senses_foc" value="0"/></td>
 					<td style="background-color:white">
-						<button type="roll" name="attr_npc_roll_senses" value="&amp;{template:skillroll} {{npc_name=@{npc_name}}} {{header=Senses Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Senses}} {{EXP=@{npc_senses_exp}}} {{FOC=@{npc_senses_foc}}} {{attribute=?{Attribute|Agility, @{npc_agility}|Awareness, @{npc_awareness}|Brawn, @{npc_brawn}|Coordination, @{npc_coordination}|Intelligence, @{npc_intelligence}|Personality, @{npc_personality}|Willpower, @{npc_willpower}}}} {{roll=[[{{ceil(([[@{npc_senses_exp}+?{Attribute}]]-d20cs<[[@{npc_senses_exp}+?{Attribute}]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{npc_senses_exp}+?{Attribute}]]-@{npc_senses_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_senses_exp}+?{Attribute&amp;#125;]]cf<@{npc_senses_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_senses_exp}+?{Attribute&amp;#125;]]-@{npc_senses_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-						</button>
+						<button type="roll" name="roll_npc_senses" value="@{npc_senses_action}"></button>
+						<button type="action" name="act_npc-senses-action" class="hidden"></button>
+						<input type="hidden" name="attr_npc_senses_action" value="">
 					</td>
 					<th>Technical</th>
-					<td class="StatInput"><input type="number" name="attr_npc_technical_exp" /></td>
-					<td class="StatInput"><input type="number" name="attr_npc_technical_foc" /></td>
+					<td class="StatInput"><input type="number" name="attr_npc_technical_exp" value="0"/></td>
+					<td class="StatInput"><input type="number" name="attr_npc_technical_foc" value="0"/></td>
 					<td style="background-color:white">
-						<button type="roll" name="attr_npc_roll_technical" value="&amp;{template:skillroll} {{npc_name=@{npc_name}}} {{header=Technical Test}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Technical}} {{EXP=@{npc_technical_exp}}} {{FOC=@{npc_technical_foc}}} {{attribute=?{Attribute|Agility, @{npc_agility}|Awareness, @{npc_awareness}|Brawn, @{npc_brawn}|Coordination, @{npc_coordination}|Intelligence, @{npc_intelligence}|Personality, @{npc_personality}|Willpower, @{npc_willpower}}}} {{roll=[[{{ceil(([[@{npc_technical_exp}+?{Attribute}]]-d20cs<[[@{npc_technical_exp}+?{Attribute}]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{npc_technical_exp}+?{Attribute}]]-@{npc_technical_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-d20cs<[[@{npc_technical_exp}+?{Attribute&amp;#125;]]cf<@{npc_technical_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{npc_technical_exp}+?{Attribute&amp;#125;]]-@{npc_technical_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}}">
-						</button>
+						<button type="roll" name="roll_npc_technical" value="@{npc_technical_action}"></button>
+						<button type="action" name="act_npc-technical-action" class="hidden"></button>
+						<input type="hidden" name="attr_npc_technical_action" value="">
 					</td>
 				</tr>
 			</table>
@@ -5704,7 +5710,13 @@
 			'command',
 			'lifestyle',
 			'persuade',
-			'discipline'
+			'discipline',
+			'npc_combat',
+			'npc_movement',
+			'npc_social',
+			'npc_fortitude',
+			'npc_senses',
+			'npc_technical'
 		],
 
 		attributes: [
@@ -5752,7 +5764,9 @@
 	};
 
 	const titleCase = function (str) {
-		return str
+		var newstr = str.replaceAll('npc_','');
+		newstr = newstr.replaceAll('_',' ');
+		return newstr
 			.split(' ')
 			.map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
 			.join(' ');
@@ -5762,7 +5776,7 @@
 		const names = {
 			'underscore': name,
 			'dash': (name.replaceAll('_','-')),
-			'space': titleCase(name.replaceAll('_',' '))
+			'space': titleCase(name)
 		};
 
 		const attrOptions = {
@@ -5791,7 +5805,7 @@
 				skills: ['animal_handling','command','lifestyle','persuade']
 			},
 			'willpower': {
-				query: '?{Attribute|Willpower,@{willpower|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}}}',
+				query: '?{Attribute|Willpower,@{willpower}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}}}',
 				skills: ['discipline']
 			},
 			'npc_agility': {
@@ -5819,7 +5833,7 @@
 				skills: ['npc_social']
 			},
 			'npc_willpower': {
-				query: '?{Attribute|Willpower,@{npc_willpower|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}}}',
+				query: '?{Attribute|Willpower,@{npc_willpower}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}}}',
 				skills: ['npc_fortitude']
 			},
 			'shell_agility': {
@@ -5847,7 +5861,7 @@
 				skills: ['shell_social']
 			},
 			'shell_willpower': {
-				query: '?{Attribute|Willpower,@{shell_willpower|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}}}',
+				query: '?{Attribute|Willpower,@{shell_willpower}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}}}',
 				skills: ['shell_fortitude']
 			}
 		};
@@ -5859,11 +5873,13 @@
 			roll = roll.replaceAll('ATTR_NAME', names.underscore);
 			roll = roll.replaceAll('ATTRNAME', names.space);
 			return roll;
+		} else if (name.indexOf('npc_') != -1) {
+			roll = "&{template:skillroll} {{target_number=[[QUERY_ATTRIBUTE[Attribute]+@{SKILL_NAME_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{SKILL_NAME_foc}]]]]}} {{header=SKILLNAME Check}} {{subheader=@{npc_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{SKILL_NAME_foc}]]}}";
 		}
 
 		var attrQuery = '';
 
-		Object.entries(attrOptions).forEach(([key, value]) => {
+		Object.entries(attrOptions).find(([key, value]) => {
 			if ((value.skills).includes(name)) {
 				attrQuery = value.query;
 			}
