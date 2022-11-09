@@ -2268,7 +2268,7 @@
 					<td>
 						<label> Cashflow</label>
 	
-						<input style=width:130px type="number" name="attr_cashflow_max" disabled/>
+						<input style=width:130px type="number" name="attr_cashflow_max" value="(@{personality}+@{skill_lifestyle_exp}+@{earnings}+@{cashflow_mod})" disabled="true"/>
 					</td>
 			</table>
 	
@@ -4220,12 +4220,6 @@
 	<textarea name="attr_More_add_Notes"></textarea>
 	<br>
 	<span class="note">Note: Legacy tab is NOT cross-functional with the rest of the sheet. Any changes made here might not copy to the other tabs. This tab is also not currently maintained; use at your own risk.</span>
-	
-	
-	
-	
-	</div>
-	<!-- .section-stress -->
 </div>
 <input type="hidden" name="attr_sheet_version" value="1.0" />
 
@@ -5108,7 +5102,7 @@
 	
 		// Code below is by Scott C., taken from his sheet for Genefunk 2090.
 		// Source: https://github.com/Roll20/roll20-character-sheets/blob/4c930e6ee3ceae8dd777e483d7ee8c801fad754a/Genefunk%202090/genefunk2090.js#L1788
-	
+
 		function openSheet() {
 			console.log("Starting import process.");
 			getSections(updateSheet,baseGet);
@@ -5695,46 +5689,54 @@
 		});
 	});
 
-	const updateActionButtons = function() {
-		const attrActions = [ // Attributes with associated roll buttons.
-			'agility_action',
-			'acrobatics_action',
-			'close_combat_action',
-			'stealth_action',
-			'awareness_action',
-			'analysis_action',
-			'extraplanetary_action',
-			'observation_action',
-			'survival_action',
-			'thievery_action',
-			'brawn_action',
-			'athletics_action',
-			'resistance_action',
-			'coordination_action',
-			'ballistics_action',
-			'pilot_action',
-			'spacecraft_action',
-			'intelligence_action',
-			'education_action',
-			'hacking_action',
-			'medicine_action',
-			'psychology_action',
-			'science_action',
-			'tech_action',
-			'personality_action',
-			'animal_handling_action',
-			'command_action',
-			'lifestyle_action',
-			'persuade_action',
-			'willpower_action',
-			'discipline_action'
-		];
+	var attrActions = {
+		skills: [
+			'acrobatics',
+			'close_combat',
+			'stealth',
+			'analysis',
+			'extraplanetary',
+			'observation',
+			'survival',
+			'thievery',
+			'athletics',
+			'resistance',
+			'ballistics',
+			'pilot',
+			'spacecraft',
+			'education',
+			'hacking',
+			'medicine',
+			'psychology',
+			'science',
+			'tech',
+			'animal_handling',
+			'command',
+			'lifestyle',
+			'persuade',
+			'discipline'
+		],
 
-		getAttrs(["character_name", ...attrActions], function(v) {
+		attributes: [
+			'agility',
+			'awareness',
+			'brawn',
+			'coordination',
+			'intelligence',
+			'personality',
+			'willpower',
+		]
+	};
+
+	attrActions['all'] = [...attrActions.skills, ...attrActions.attributes];
+
+	var updateActionButtons = function () {
+		getAttrs(["character_name", ...attrActions.all], function(v) {
 			var attrsToChange = {};
-			attrActions.forEach(attr => {
+			attrActions.all.forEach(attr => {
 				let strAct = attr.replaceAll('_','-');
-				attrsToChange[attr] = "%{" + v["character_name"] + `|${strAct}}`;
+				let strAttr = attr + "_action";
+				attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "-action}";
 			});
 			setAttrs(attrsToChange);
 		});
@@ -5758,592 +5760,151 @@
 
 		return results;
 	};
-    // Agility
-    on("clicked:agility-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[@{agility}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Agility Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
 
-    // Acrobatics
-    on("clicked:acrobatics-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_acrobatics_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_acrobatics_foc}]]]]}} {{header=Acrobatics Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_acrobatics_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+	const titleCase = function (str) {
+		return str
+			.split(' ')
+			.map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+			.join(' ');
+	};
 
-    // Close Combat
-    on("clicked:close-combat-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_close_combat_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_close_combat_foc}]]]]}} {{header=Close Combat Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_close_combat_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+	const generateRoll = function(name) {
+		const names = {
+			'underscore': name,
+			'dash': (name.replaceAll('_','-')),
+			'space': titleCase(name.replaceAll('_',' '))
+		};
 
-    // Stealth
-    on("clicked:stealth-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_stealth_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_stealth_foc}]]]]}} {{header=Stealth Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_stealth_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+		const attrOptions = {
+			'agility': {
+				query: '?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
+				skills: ['acrobatics','close_combat','stealth']
+			},
+			'awareness': {
+				query:'?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
+				skills: ['analysis','extraplanetary','observation','survival','thievery']
+			},
+			'brawn': {
+				query:'?{Attribute|Brawn,@{brawn}|Agility,@{agility}|Awareness,@{awareness}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
+				skills: ['athletics','resistance']
+			},
+			'coordination': {
+				query: '?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
+				skills: ['ballistics','pilot','spacecraft']
+			},
+			'intelligence': {
+				query: '?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}',
+				skills: ['education','hacking','medicine','psychology','science','tech']
+			},
+			'personality': {
+				query: '?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}',
+				skills: ['animal_handling','command','lifestyle','persuade']
+			},
+			'willpower': {
+				query: '?{Attribute|Willpower,@{willpower|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}}}',
+				skills: ['discipline']
+			},
+			'npc_agility': {
+				query: '?{Attribute|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+				skills: ['npc_movement']
+			},
+			'npc_awareness': {
+				query: '?{Attribute|Awareness,@{npc_awareness}|Agility,@{npc_agility}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+				skills: ['npc_senses']
+			},
+			'npc_brawn': {
+				query: '?{Attribute|Brawn,@{npc_brawn}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+				skills: ['npc_fortitude']
+			},
+			'npc_coordination': {
+				query: '?{Attribute|Coordination,@{npc_coordination}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+				skills: ['npc_combat']
+			},
+			'npc_intelligence': {
+				query: '?{Attribute|Intelligence,@{npc_intelligence}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+				skills: ['npc_technical']
+			},
+			'npc_personality': {
+				query: '?{Attribute|Personality,@{npc_personality}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Willpower,@{npc_willpower}}',
+				skills: ['npc_social']
+			},
+			'npc_willpower': {
+				query: '?{Attribute|Willpower,@{npc_willpower|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}}}',
+				skills: ['npc_fortitude']
+			},
+			'shell_agility': {
+				query: '?{Attribute|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+				skills: ['shell_movement']
+			},
+			'shell_awareness': {
+				query: '?{Attribute|Awareness,@{shell_awareness}|Agility,@{shell_agility}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+				skills: ['shell_senses']
+			},
+			'shell_brawn': {
+				query: '?{Attribute|Brawn,@{shell_brawn}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+				skills: ['shell_fortitude']
+			},
+			'shell_coordination': {
+				query: '?{Attribute|Coordination,@{shell_coordination}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+				skills: ['shell_combat']
+			},
+			'shell_intelligence': {
+				query: '?{Attribute|Intelligence,@{shell_intelligence}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+				skills: ['shell_technical']
+			},
+			'shell_personality': {
+				query: '?{Attribute|Personality,@{shell_personality}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Willpower,@{shell_willpower}}',
+				skills: ['shell_social']
+			},
+			'shell_willpower': {
+				query: '?{Attribute|Willpower,@{shell_willpower|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}}}',
+				skills: ['shell_fortitude']
+			}
+		};
 
-    // Awareness
-    on("clicked:awareness-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[@{awareness}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Awareness Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+		var roll = "&{template:skillroll} {{target_number=[[QUERY_ATTRIBUTE[Attribute]+@{skill_SKILL_NAME_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_SKILL_NAME_foc}]]]]}} {{header=SKILLNAME Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_SKILL_NAME_foc}]]}}";
 
-    // Analysis
-    on("clicked:analysis-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_analysis_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_analysis_foc}]]]]}} {{header=Analysis Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_analysis_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+		if ((attrActions.attributes).includes(name)) {
+			roll = "&{template:skillroll} {{target_number=[[@{ATTR_NAME}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=ATTRNAME Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}";
+			roll = roll.replaceAll('ATTR_NAME', names.underscore);
+			roll = roll.replaceAll('ATTRNAME', names.space);
+			return roll;
+		}
 
-    // Extraplanetary
-    on("clicked:extraplanetary-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_extraplanetary_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_extraplanetary_foc}]]]]}} {{header=Extraplanetary Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_extraplanetary_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+		var attrQuery = '';
 
-    // Observation
-    on("clicked:observation-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_observation_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_observation_foc}]]]]}} {{header=Observation Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_observation_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+		Object.entries(attrOptions).forEach(([key, value]) => {
+			if ((value.skills).includes(name)) {
+				attrQuery = value.query;
+			}
+		});
 
-    // Survival
-    on("clicked:survival-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_survival_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_survival_foc}]]]]}} {{header=Survival Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_survival_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+		roll = roll.replaceAll('QUERY_ATTRIBUTE', attrQuery);
+		roll = roll.replaceAll('SKILL_NAME', names.underscore);
+		roll = roll.replaceAll('SKILLNAME', names.space);
 
-    // Thievery
-    on("clicked:thievery-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_thievery_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_thievery_foc}]]]]}} {{header=Thievery Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_thievery_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+		return roll;
+	};
 
-    // Brawn
-    on("clicked:brawn-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[@{brawn}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Brawn Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Athletics
-    on("clicked:athletics-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Brawn,@{brawn}|Agility,@{agility}|Awareness,@{awareness}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_athletics_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_athletics_foc}]]]]}} {{header=Athletics Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_athletics_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Resistance
-    on("clicked:resistance-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Brawn,@{brawn}|Agility,@{agility}|Awareness,@{awareness}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_resistance_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_resistance_foc}]]]]}} {{header=Resistance Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_resistance_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Coordination
-    on("clicked:coordination-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[@{coordination}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Coordination Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Ballistics
-    on("clicked:ballistics-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_ballistics_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_ballistics_foc}]]]]}} {{header=Ballistics Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_ballistics_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Pilot
-    on("clicked:pilot-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_pilot_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_pilot_foc}]]]]}} {{header=Pilot Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_pilot_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Spacecraft
-    on("clicked:spacecraft-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_spacecraft_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_spacecraft_foc}]]]]}} {{header=Spacecraft Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_spacecraft_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Intelligence
-    on("clicked:intelligence-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[@{intelligence}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Intelligence Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Education
-    on("clicked:education-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_education_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_education_foc}]]]]}} {{header=Education Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_education_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Hacking
-    on("clicked:hacking-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_hacking_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_hacking_foc}]]]]}} {{header=Hacking Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_hacking_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Medicine
-    on("clicked:medicine-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_medicine_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_medicine_foc}]]]]}} {{header=Medicine Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_medicine_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Psychology
-    on("clicked:psychology-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_psychology_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_psychology_foc}]]]]}} {{header=Psychology Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_psychology_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Science
-    on("clicked:science-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_science_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_science_foc}]]]]}} {{header=Science Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_science_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Tech
-    on("clicked:tech-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}[Attribute]+@{skill_tech_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_tech_foc}]]]]}} {{header=Tech Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_tech_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Personality
-    on("clicked:personality-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[@{personality}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Personality Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Animal Handling
-    on("clicked:animal-handling-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}[Attribute]+@{skill_animal_handling_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_animal_handling_foc}]]]]}} {{header=Animal Handling Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_animal_handling_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Command
-    on("clicked:command-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}[Attribute]+@{skill_command_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_command_foc}]]]]}} {{header=Command Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_command_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Lifestyle
-    on("clicked:lifestyle-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}[Attribute]+@{skill_lifestyle_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_lifestyle_foc}]]]]}} {{header=Lifestyle Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_lifestyle_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Persuade
-    on("clicked:persuade-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}[Attribute]+@{skill_persuade_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_persuade_foc}]]]]}} {{header=Persuade Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_persuade_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Willpower
-    on("clicked:willpower-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[@{willpower}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=Willpower Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
-
-    // Discipline
-    on("clicked:discipline-action", (info) => {
-        startRoll("&{template:skillroll} {{target_number=[[?{Attribute|Willpower,@{willpower|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}}}[Attribute]+@{skill_discipline_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_discipline_foc}]]]]}} {{header=Discipline Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_discipline_foc}]]}}", (allRolls) => {
-            const computed = calcSkillRoll(
-                allRolls.results.roll.dice, 
-                allRolls.results.target_number.result, 
-                allRolls.results.skill_foc.result
-            ).successes;
-            const computedResults = {
-                roll: computed
-            };
-            
-            finishRoll(
-                allRolls.rollId,
-                computedResults
-            );
-        });
-    });
+	(attrActions.all).forEach((attr) => { // Event listener for all rolling buttons.
+		const attrAct = attr.replaceAll('_','-');
+		on(`clicked:${attrAct}-action`, (info) => {
+			const roll = generateRoll(attr);
+			startRoll(roll, (allRolls) => {
+				const computed = calcSkillRoll(
+					allRolls.results.roll.dice, 
+					allRolls.results.target_number.result, 
+					allRolls.results.skill_foc.result
+				).successes;
+				const computedResults = {
+					roll: computed
+				};
+				
+				finishRoll(
+					allRolls.rollId,
+					computedResults
+				);
+			});
+		});
+	});
 </script>
