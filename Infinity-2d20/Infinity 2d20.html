@@ -5104,19 +5104,16 @@
 		// Source: https://github.com/Roll20/roll20-character-sheets/blob/4c930e6ee3ceae8dd777e483d7ee8c801fad754a/Genefunk%202090/genefunk2090.js#L1788
 
 		function openSheet() {
-			console.log("Starting import process.");
 			getSections(updateSheet,baseGet);
 		}
 	
 		function getSections (callback,getArray,trigger,sections,queue) {
-			console.log("Getting sections");
 			queue = queue || JSON.parse(JSON.stringify(repeating_section_details));
 			getArray = getArray || [];
 			sections = sections || {};
 			let section = queue.shift();
 	
 			getSectionIDs(section.section,(idArray)=>{
-				console.log("Getting repeating sections");
 				sections[section.section]=[];
 				idArray.forEach((id)=>{
 					sections[section.section].push(id);
@@ -5134,7 +5131,6 @@
 		}
 	
 		function updateSheet (getArray,sections){
-			console.log("Checking sheet version");
 			const setObj = {};
 			getAttrs([...getArray,'sheet_version'],(attr)=>{
 				console.log("Sheet version detected: " + attr.sheet_version)
@@ -5149,7 +5145,6 @@
 		}
 	
 		function set (obj,callback) {
-			console.log("Setting new values.");
 			setAttrs(obj,{silent:true},callback);
 		}
 	
@@ -5445,7 +5440,6 @@
 			// There is also the repeating talents section, where each id actually needs to be split into two new repeating ids.
 			function repeatingToRepeatingTalent (rowId, attrCurrent) {
 				var newAttrs = {};
-				console.log("Migrating repeating talents. RowID: " + rowId);
 				const oldAttrsA = [
 					`repeating_talents_${rowId}_ATallent_Namerep1`,
 					`repeating_talents_${rowId}_ATallent_Skillrep1`,
@@ -5485,7 +5479,6 @@
 			// Talents 2-12 are non-repeating but need to be transferred to repeating sections if they are filled out.
 	
 			function staticToRepeatingTalent (talentNumber, attrCurrent, setObj) {
-				console.log("Migrating talents: static to repeating");
 				const repeatingAttrs = [
 					"talent_name",
 					"talent_skill",
@@ -5522,7 +5515,6 @@
 			// Weapons:
 			// All repeating. Transfer each repeating id to a new one.
 			function repeatingToRepeatingWeapon (rowId, attrCurrent) {
-				console.log("Migrating repeating weapons. RowID: " + rowId);
 				var newAttrs = {};
 				const oldAttrs = [
 					`repeating_Weapons_${rowId}_weapon_Name_rep`,
@@ -5588,7 +5580,6 @@
 			// All repeating.
 			function repeatingToRepeatingGear (rowId, attrCurrent) {
 				var newAttrs = {};
-				console.log("Migrating repeating gear. RowID: " + rowId);
 				const oldAttrs = [
 					`repeating_Gear_${rowId}_weapon_GearName1_rep`,
 					`repeating_Gear_${rowId}_Gear_Effect1_rep`,
@@ -5617,7 +5608,6 @@
 				set(newAttrs);
 			});
 	
-			console.log("Updating sheet version to 1.1");
 			setObj.sheet_version = 1.1;
 			attrCurrent = {...attrCurrent, ...setObj};
 		}
