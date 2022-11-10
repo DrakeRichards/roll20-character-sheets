@@ -937,7 +937,14 @@
 							<td class="StatInput"><input type="text" name="attr_weapon_range" /></td>
 							<td class="StatInput"><input type="text" name="attr_weapon_damage_fixed"/></td>
 							<td class="StatInput"><span class="InputText">+</span></td>
-							<td class="StatInput"><input type="text" name="attr_weapon_damage_dice"/><img class="icon-N-small" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/841e7acc230c9216b1954c645222fb058a60926b/Infinity-2d20/aleph.svg"/></td>
+							<td class="StatInput">
+								<input type="text" name="attr_weapon_damage_dice"/>
+								<button type="roll" name="roll_weapon_damage" value="@{weapon_damage_action}">
+									<img class="icon-N-small" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/841e7acc230c9216b1954c645222fb058a60926b/Infinity-2d20/aleph.svg"/>
+								</button>
+								<button type="action" name="act_weapon-damage-action" class="hidden"></button>
+								<input type="hidden" name="attr_weapon_damage_action" value="">
+							</td>
 							<td class="StatInput"><input type="text" name="attr_weapon_burst" /></td>
 							<td class="StatInput"><input type="text" name="attr_weapon_size" /></td>
 							<td class="StatInput"><input type="text" name="attr_weapon_ammo" /></td>
@@ -4279,13 +4286,13 @@
 		<h2>{{subheader}}</h2>
 		<div>
 			<label>Sum: </label>
-			<span>{{computed::roll1}}</span>
+			<span>{{computed::roll}}</span>
 			<label> + </label>
 			<span>{{modifier}}</span>
 		</div>
 		<div>
 			<label>Effect: </label>
-			<span>{{roll1}}</span>
+			<span>{{roll}}</span>
 		</div>
 	</div>
 </rolltemplate>
@@ -5095,7 +5102,25 @@
 					'RL2',
 					'RL3',
 					'RL4',
-					'RL5'
+					'RL5',
+					'weapon_name',
+					'weapon_range',
+					'weapon_damage_fixed',
+					'weapon_damage_dice',
+					'weapon_damage_action',
+					'weapon_burst',
+					'weapon_size',
+					'weapon_ammo',
+					'weapon_qualities',
+					'weapon_type',
+					'weapon_type',
+					'weapon_type',
+					'weapon_type',
+					'weapon_infowar_roll',
+					'weapon_psywar_roll',
+					'weapon_melee_roll',
+					'weapon_ranged_roll',
+					'weapon_reloads'
 				]
 			},
 			{
@@ -5679,12 +5704,12 @@
 	};
 	
 	on('clicked:rollCombatDice', (info) => {
-		startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll1=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
+		startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
 			
-			const computed = calcCombatDice(allRolls.results.roll1.dice);
+			const computed = calcCombatDice(allRolls.results.roll.dice);
 
 			const computedResults = {
-				roll1: computed.sum
+				roll: computed.sum
 			};
 	
 			finishRoll(allRolls.rollId, computedResults);
@@ -5728,7 +5753,8 @@
 			'shell_social',
 			'shell_fortitude',
 			'shell_senses',
-			'shell_technical'
+			'shell_technical',
+			'weapon_damage'
 		],
 
 		attributes: [
@@ -5744,10 +5770,72 @@
 
 	attrActions['all'] = [...attrActions.skills, ...attrActions.attributes];
 
+	const attrActionsRepeating = {
+		'weapons': {
+			'attributes': [
+				'weapon_name',
+				'weapon_range',
+				'weapon_damage_fixed',
+				'weapon_damage_dice',
+				'weapon_damage_action',
+				'weapon_burst',
+				'weapon_size',
+				'weapon_ammo',
+				'weapon_qualities',
+				'weapon_type',
+				'weapon_type',
+				'weapon_type',
+				'weapon_type',
+				'weapon_infowar_roll',
+				'weapon_psywar_roll',
+				'weapon_melee_roll',
+				'weapon_ranged_roll',
+				'weapon_reloads'
+			],
+			'actions': [
+				'weapon_damage',
+				'weapon_attack'
+			]
+		}
+	};
+
+	const getRepeatingActions = function (sectionDetails) {
+		let attrs = {};
+		Object.entries(sectionDetails).forEach(([key, value], index) => {
+			getSectionIDs(key, (idarray) => {
+				let getList = (sectionDetails[key]).actions;
+				idarray.forEach((rowId) => {
+					getList.forEach((attr) => {
+						let strAttr = `repeating_${key}_${rowId}_${attr}_action`;
+						let s = attr.replaceAll('_','-');
+						let strAct = `repeating_${key}_${rowId}_${s}-action`;
+						attrs[strAttr] = strAct;
+					});
+				});
+			});
+		});
+		return attrs;
+	};
+	
 	var updateActionButtons = function () {
-		getAttrs(["character_name", ...attrActions.all], function(v) {
-			var attrsToChange = {};
-			attrActions.all.forEach(attr => {
+		// I don't know how to use asynchronous functions, so I'll handle the repeating and static attributes separately.
+		// Repeating sections
+		const attrRepeatingActions = getRepeatingActions(attrActionsRepeating);
+		getAttrs(["character_name", ...(Object.keys(attrRepeatingActions))], (v) => {
+			let attrsToChange = {};
+			Object.entries(attrRepeatingActions).forEach(([key, value], index) => {
+				let strAttr = (Object.keys(attrRepeatingActions))[index];
+				let strAct = attrRepeatingActions[key];
+				//strAct = strAct.replaceAll('_','-');
+				attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "}";
+			});
+			setAttrs(attrsToChange);
+		});
+	
+		// Static sections
+		getAttrs(["character_name", ...(attrActions.all)], function(v) {
+			let attrsToChange = {};
+			(attrActions.all).forEach(attr => {
 				let strAct = attr.replaceAll('_','-');
 				let strAttr = attr + "_action";
 				attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "-action}";
@@ -5756,7 +5844,7 @@
 		});
 	};
 
-	on("sheet:opened change:character_name", updateActionButtons);
+	on("sheet:opened change:character_name change:repeating_weapons", updateActionButtons);
 
 	const calcSkillRoll = function (rolls, tn, foc) {
 		let results = {
@@ -5925,6 +6013,43 @@
 					allRolls.rollId,
 					computedResults
 				);
+			});
+		});
+	});
+
+	const actsRepeating = [
+		'repeating_weapons:weapon-damage-action'
+	];
+
+	const parseRepeatingSection = function (sourceAttribute, triggerAttribute) {
+		let result = {};
+
+		const reRowId = /(?<=_-)[\w\d]*(?=_)/s;
+		result['rowId'] = (reRowId.exec(sourceAttribute))[0];
+
+		const reSection = /[\w\d]*(?=:)/s;
+		result['section'] = (reSection.exec(triggerAttribute))[0];
+
+		const reAction = /(?<=:)[\w\d\-]*$/s;
+		result['action'] = (reAction.exec(triggerAttribute))[0];
+		return result;
+	};
+
+	actsRepeating.forEach((attr) => { // Event listener for all rolling buttons.
+		on(`clicked:${attr}`, (info) => {
+			const sectionInfo = parseRepeatingSection(info.sourceAttribute, attr);
+			//const roll = generateCdRoll(sectionInfo);
+			const roll = `&{template:combatdice} {{header=@{${sectionInfo.section}_-${sectionInfo.rowId}_weapon_name} Damage}} {{subheader=Vigour attack}} {{roll=[[[[?{Number of dice|@{${sectionInfo.section}_-${sectionInfo.rowId}_weapon_damage_dice}}+@{damage_bonus_ranged}]]d6>6cf0cs6[Weapon damage]]]}} {{modifier=[[?{Modifier|@{${sectionInfo.section}_-${sectionInfo.rowId}_weapon_damage_fixed}}[Weapon bonus]+@{damage_bonus_ranged_static}[Ranged bonus]]]}}`;
+			console.log(sectionInfo);
+			startRoll(roll, (allRolls) => {
+			
+				const computed = calcCombatDice(allRolls.results.roll.dice);
+	
+				const computedResults = {
+					roll: computed.sum
+				};
+		
+				finishRoll(allRolls.rollId, computedResults);
 			});
 		});
 	});
