@@ -960,14 +960,19 @@
 						<tr>
 							<td class="StatLabelSub WeaponStats-EvenLabel">Type</td>
 							<td class="StatInput WeaponType">
-								<input type="radio" name="attr_weapon_type" value="Infowar" class="weapon-tab weapon-tab-1" checked="checked" /><span class="weapon-tab weapon-tab-1"><span class="symbol-a">'</span>INF</span>
+								<input type="radio" name="attr_weapon_type" value="Infowar" class="weapon-tab weapon-tab-1" checked="checked" />
+								<span class="weapon-tab weapon-tab-1"><span class="symbol-a">'</span>INF</span>
 								<input type="radio" name="attr_weapon_type" value="Psywar" class="weapon-tab weapon-tab-2" /><span class="weapon-tab weapon-tab-2"><span class="symbol-a">U</span>PSY</span>
 								<input type="radio" name="attr_weapon_type" value="Melee" class="weapon-tab weapon-tab-3" /><span class="weapon-tab weapon-tab-3"><span class="symbol-a">J</span>MEL</span>
 								<input type="radio" name="attr_weapon_type" value="Ranged" class="weapon-tab weapon-tab-4" /><span class="weapon-tab weapon-tab-4"><span class="symbol-b">[</span>RAN</span>
-								<button type="roll" class="button-damage button-infowar" name="attr_weapon_infowar_roll" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=@{weapon_name} Attack}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Hacking}} {{skill_exp=@{skill_hacking_exp}}} {{skill_foc=@{skill_hacking_foc}}} {{attribute=Intelligence, @{intelligence}}} {{ammo=@{weapon_ammo}}} {{qualities=@{weapon_qualities}}} {{roll=[[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_hacking_exp}+@{intelligence}]]-d20cs<[[@{skill_hacking_exp}+@{intelligence}]]cf<@{skill_hacking_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_hacking_exp}+@{intelligence}]]-@{skill_hacking_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}} {{damage_roll=[Roll Damage](!&#13;/em rolls damage for @{weapon_name} &#13;/r ?{Fixed damage|@{weapon_damage_fixed}}+[[?{Variable damage|@{weapon_damage_dice}}+@{damage_bonus_infowar}]]t[Combat-Dice])}}"></button>
+								
+								<button type="roll" class="button-damage button-infowar" name="attr_weapon_infowar_roll" value="@{weapon_infowar_action}"></button>
+								<button type="action" name="act_weapon-infowar-action" class="hidden"></button>
+								<input type="hidden" name="attr_weapon_infowar_action" value="">
+
 								<button type="roll" class="button-damage button-psywar" name="attr_weapon_psywar_roll" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=@{weapon_name} Attack}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Persuade}} {{skill_exp=@{skill_persuade_exp}}} {{skill_foc=@{skill_persuade_foc}}} {{attribute=Personality, @{personality}}} {{ammo=@{weapon_ammo}}} {{qualities=@{weapon_qualities}}} {{roll=[[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_persuade_exp}+@{personality}]]-d20cs<[[@{skill_persuade_exp}+@{personality}]]cf<@{skill_persuade_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_persuade_exp}+@{personality}]]-@{skill_persuade_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}} {{damage_roll=[Roll Damage](!&#13;/em rolls damage for @{weapon_name} &#13;/r ?{Fixed damage|@{weapon_damage_fixed}}+[[?{Variable damage|@{weapon_damage_dice}}+@{damage_bonus_psywar}]]t[Combat-Dice])}}"></button>
 								<button type="roll" class="button-damage button-melee" name="attr_weapon_melee_roll" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=@{weapon_name} Attack}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Close Combat}} {{skill_exp=@{skill_close_combat_exp}}} {{skill_foc=@{skill_close_combat_foc}}} {{attribute=Brawn, @{brawn}}} {{ammo=@{weapon_ammo}}} {{qualities=@{weapon_qualities}}} {{roll=[[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_close_combat_exp}+@{brawn}]]-d20cs<[[@{skill_close_combat_exp}+@{brawn}]]cf<@{skill_close_combat_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_close_combat_exp}+@{brawn}]]-@{skill_close_combat_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}} {{damage_roll=[Roll Damage](!&#13;/em rolls damage for @{weapon_name} &#13;/r ?{Fixed damage|@{weapon_damage_fixed}}+[[?{Variable damage|@{weapon_damage_dice}}+@{damage_bonus_melee}]]t[Combat-Dice])}}"></button>
-								<button type="roll" class="button-damage button-ranged" name="attr_weapon_ranged_roll" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=@{weapon_name} Attack}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Ballistics}} {{skill_exp=@{skill_ballistics_exp}}} {{skill_foc=@{skill_ballistics_foc}}} {{attribute=Coordination, @{coordination}}} {{ammo=@{weapon_ammo}}} {{qualities=@{weapon_qualities}}} {{roll=[[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}} {{damage_roll=[Roll Damage](!&#13;/em rolls damage for @{weapon_name} &#13;/r ?{Fixed damage|@{weapon_damage_fixed}}+[[?{Variable damage|@{weapon_damage_dice}}+@{damage_bonus_ranged}]]t[Combat-Dice])}}"></button>
+								<button type="roll" class="button-damage button-ranged" name="attr_weapon_ranged_roll" value="&amp;{template:skillroll} {{character_name=@{character_name}}} {{header=@{weapon_name} Attack}} {{subheader=Difficulty ?{Difficulty|1}}} {{skill=Ballistics}} {{skill_exp=@{skill_ballistics_exp}}} {{skill_foc=@{skill_ballistics_foc}}} {{attribute=Coordination, @{coordination}}} {{ammo=@{weapon_ammo}}} {{qualities=@{weapon_qualities}}} {{roll=[[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range|1}]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc})),{2}}kl1,{0}}kh1]]?{Dice Pool|1d20, |2d20, + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|3d20, + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|4d20, + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]|5d20, + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]] + [[{{ceil(([[@{skill_ballistics_exp}+@{coordination}]]-d20cs<[[@{skill_ballistics_exp}+@{coordination}]]cf<@{skill_ballistics_foc}cf>[[21-?{Complication Range&amp;#125;]]+1e-2)/([[@{skill_ballistics_exp}+@{coordination}]]-@{skill_ballistics_foc}))&amp;#44;{2&amp;#125;&amp;#125;kl1&amp;#44;{0&amp;#125;&amp;#125;kh1]]}}} {{damage_roll=[Roll Damage](~repeating_weapons_weapon_damage)}}"></button>
 							</td>
 							<td class="StatLabelSub">Reloads</td>
 							<td class="StatInput"><input type="number" name="attr_weapon_reloads" value="0" /></td>
@@ -4297,9 +4302,10 @@
 	</div>
 </rolltemplate>
 
-<!-- Sheet workers -->
 <script type="text/worker">
-	on('sheet:opened', function(){
+	var Infinity2d20 = Infinity2d20 || (function() {
+		const version = 1.1;
+	
 		// Array of all attribute names present on version 0.
 		var attrListOld = [
 			"character_name",
@@ -5139,12 +5145,12 @@
 	
 		// Code below is by Scott C., taken from his sheet for Genefunk 2090.
 		// Source: https://github.com/Roll20/roll20-character-sheets/blob/4c930e6ee3ceae8dd777e483d7ee8c801fad754a/Genefunk%202090/genefunk2090.js#L1788
-
-		function openSheet() {
-			getSections(updateSheet,baseGet);
-		}
 	
-		function getSections (callback,getArray,trigger,sections,queue) {
+		var openSheet = function() {
+			getSections(updateSheet,baseGet);
+		};
+	
+		var getSections = function (callback,getArray,trigger,sections,queue) {
 			queue = queue || JSON.parse(JSON.stringify(repeating_section_details));
 			getArray = getArray || [];
 			sections = sections || {};
@@ -5165,9 +5171,9 @@
 				}
 			});
 	
-		}
+		};
 	
-		function updateSheet (getArray,sections){
+		var updateSheet = function (getArray,sections){
 			const setObj = {};
 			getAttrs([...getArray,'sheet_version'],(attr)=>{
 				console.log("Sheet version detected: " + attr.sheet_version)
@@ -5179,13 +5185,13 @@
 					set(setObj);
 				} // Migrate from old sheet to new style.
 			});
-		}
+		};
 	
-		function set (obj,callback) {
+		var set = function (obj,callback) {
 			setAttrs(obj,{silent:true},callback);
-		}
+		};
 	
-		function updateTo1_0 (attrCurrent, setObj) {
+		var updateTo1_0 = function (attrCurrent, setObj) {
 			console.log("Starting migration to 1.1");
 			// Migrate the values of each old attribute to their new equivalent.
 			// setAttrs takes objects with the property = attribute name and the value = new value.
@@ -5647,410 +5653,497 @@
 	
 			setObj.sheet_version = 1.1;
 			attrCurrent = {...attrCurrent, ...setObj};
-		}
-	
-		openSheet();
-	});
-
-	on('clicked:attr-inc', function(info) {
-		const split = (info.htmlAttributes.value).split(",");
-		let attr = {
-			from: {
-				name: split[0],
-				inc: split[1]
-			},
-			to: {
-				name: (split.length > 2) ? split[2] : "",
-				inc: (split.length > 2) ? split[3] : 0
-			}
 		};
-
-		getAttrs([attr.from.name, attr.to.name], function(values) {
-			let setObj = {};
-			if ((attr.from.inc == '-1') && (values[attr.from.name] == '0')) {
-				return;
-			}
-			setObj[attr.from.name] = Number(values[attr.from.name]) + Number(attr.from.inc);
-			if (attr.to.name !== "") {
-				setObj[attr.to.name] = Number(values[attr.to.name]) + Number(attr.to.inc);
-			}
-			setAttrs(setObj);
-		});
-	});
-
-	const calcCombatDice = function (rolls) {
-		let results = {
-			sum: 0,
-			effect: 0
-		}
 	
-		rolls.forEach(roll => {
-			switch(roll) {
-				case 1:
-					results.sum = results.sum + 1
-					break;
-				case 2:
-					results.sum = results.sum + 2
-					break;
-				case 6:
-					results.effect = results.effect + 1
-					break;
-				default:
-					break;
-			}
-		});
+		let registerEventHandlers = function() {
+			on('sheet:opened', openSheet);
 	
-		return results;
-	};
+			on("sheet:opened change:character_name change:repeating_weapons", updateActionButtons);
 	
-	on('clicked:rollCombatDice', (info) => {
-		startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
-			
-			const computed = calcCombatDice(allRolls.results.roll.dice);
-
-			const computedResults = {
-				roll: computed.sum
-			};
+			on('clicked:attr-inc', function(info) {
+				const split = (info.htmlAttributes.value).split(",");
+				let attr = {
+					from: {
+						name: split[0],
+						inc: split[1]
+					},
+					to: {
+						name: (split.length > 2) ? split[2] : "",
+						inc: (split.length > 2) ? split[3] : 0
+					}
+				};
+		
+				getAttrs([attr.from.name, attr.to.name], function(values) {
+					let setObj = {};
+					if ((attr.from.inc == '-1') && (values[attr.from.name] == '0')) {
+						return;
+					}
+					setObj[attr.from.name] = Number(values[attr.from.name]) + Number(attr.from.inc);
+					if (attr.to.name !== "") {
+						setObj[attr.to.name] = Number(values[attr.to.name]) + Number(attr.to.inc);
+					}
+					setAttrs(setObj);
+				});
+			});
 	
-			finishRoll(allRolls.rollId, computedResults);
-		});
-	});
-
-	var attrActions = {
-		skills: [
-			'acrobatics',
-			'close_combat',
-			'stealth',
-			'analysis',
-			'extraplanetary',
-			'observation',
-			'survival',
-			'thievery',
-			'athletics',
-			'resistance',
-			'ballistics',
-			'pilot',
-			'spacecraft',
-			'education',
-			'hacking',
-			'medicine',
-			'psychology',
-			'science',
-			'tech',
-			'animal_handling',
-			'command',
-			'lifestyle',
-			'persuade',
-			'discipline',
-			'npc_combat',
-			'npc_movement',
-			'npc_social',
-			'npc_fortitude',
-			'npc_senses',
-			'npc_technical',
-			'shell_combat',
-			'shell_movement',
-			'shell_social',
-			'shell_fortitude',
-			'shell_senses',
-			'shell_technical',
-			'weapon_damage'
-		],
-
-		attributes: [
-			'agility',
-			'awareness',
-			'brawn',
-			'coordination',
-			'intelligence',
-			'personality',
-			'willpower',
-		]
-	};
-
-	attrActions['all'] = [...attrActions.skills, ...attrActions.attributes];
-
-	const attrActionsRepeating = {
-		'weapons': {
-			'attributes': [
-				'weapon_name',
-				'weapon_range',
-				'weapon_damage_fixed',
-				'weapon_damage_dice',
-				'weapon_damage_action',
-				'weapon_burst',
-				'weapon_size',
-				'weapon_ammo',
-				'weapon_qualities',
-				'weapon_type',
-				'weapon_type',
-				'weapon_type',
-				'weapon_type',
-				'weapon_infowar_roll',
-				'weapon_psywar_roll',
-				'weapon_melee_roll',
-				'weapon_ranged_roll',
-				'weapon_reloads'
-			],
-			'actions': [
-				'weapon_damage',
-				'weapon_attack'
-			]
-		}
-	};
-
-	const getRepeatingActions = function (sectionDetails) {
-		let attrs = {};
-		Object.entries(sectionDetails).forEach(([key, value], index) => {
-			getSectionIDs(key, (idarray) => {
-				let getList = (sectionDetails[key]).actions;
-				idarray.forEach((rowId) => {
-					getList.forEach((attr) => {
-						let strAttr = `repeating_${key}_${rowId}_${attr}_action`;
-						let s = attr.replaceAll('_','-');
-						let strAct = `repeating_${key}_${rowId}_${s}-action`;
-						attrs[strAttr] = strAct;
+			on('clicked:rollCombatDice', (info) => {
+				startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
+					
+					const computed = calcCombatDice(allRolls.results.roll.dice);
+		
+					const computedResults = {
+						roll: computed.sum
+					};
+		
+					finishRoll(allRolls.rollId, computedResults);
+				});
+			});
+	
+			(attrActions.all).forEach((attr) => { // Event listener for all rolling buttons.
+				const attrAct = attr.replaceAll('_','-');
+				on(`clicked:${attrAct}-action`, (info) => {
+					const roll = generateSkillRoll(attr);
+					startRoll(roll, (allRolls) => {
+						const computed = calcSkillRoll(
+							allRolls.results.roll.dice, 
+							allRolls.results.target_number.result, 
+							allRolls.results.skill_foc.result
+						).successes;
+						const computedResults = {
+							roll: computed
+						};
+						
+						finishRoll(
+							allRolls.rollId,
+							computedResults
+						);
 					});
 				});
 			});
-		});
-		return attrs;
-	};
 	
-	var updateActionButtons = function () {
-		// I don't know how to use asynchronous functions, so I'll handle the repeating and static attributes separately.
-		// Repeating sections
-		const attrRepeatingActions = getRepeatingActions(attrActionsRepeating);
-		getAttrs(["character_name", ...(Object.keys(attrRepeatingActions))], (v) => {
-			let attrsToChange = {};
-			Object.entries(attrRepeatingActions).forEach(([key, value], index) => {
-				let strAttr = (Object.keys(attrRepeatingActions))[index];
-				let strAct = attrRepeatingActions[key];
-				//strAct = strAct.replaceAll('_','-');
-				attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "}";
+			actsRepeating.forEach((attr) => { // Event listener for all rolling buttons in repeating sections.
+				on(`clicked:${attr}`, (info) => {
+					console.log(info);
+					
+					// Determine what type of roll this is: skill check or damage?
+						// If skill check, is this an attack?
+							// If so, then the header is the weapon name. Also need to get the ammo and qualities.
+							// If not, header is the skill name.
+						// If damage in a repeating section, it has to be an attack. Header is weapon name.
+					const roll = generateAttackRoll(attr, infoAction.section, infoAction.rowId);
+					startRoll(roll, (allRolls) => {
+						const computed = calcSkillRoll(
+							allRolls.results.roll.dice, 
+							allRolls.results.target_number.result, 
+							allRolls.results.skill_foc.result
+						).successes;
+						const computedResults = {
+							roll: computed
+						};
+						
+						finishRoll(
+							allRolls.rollId,
+							computedResults
+						);
+					});
+				});
 			});
-			setAttrs(attrsToChange);
-		});
-	
-		// Static sections
-		getAttrs(["character_name", ...(attrActions.all)], function(v) {
-			let attrsToChange = {};
-			(attrActions.all).forEach(attr => {
-				let strAct = attr.replaceAll('_','-');
-				let strAttr = attr + "_action";
-				attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "-action}";
-			});
-			setAttrs(attrsToChange);
-		});
-	};
-
-	on("sheet:opened change:character_name change:repeating_weapons", updateActionButtons);
-
-	const calcSkillRoll = function (rolls, tn, foc) {
-		let results = {
-			successes: 0
-		}
-
-		rolls.forEach(roll => {
-			if (roll <= tn) {
-				results.successes += 1;
-			}
-			if (roll <= foc) {
-				results.successes += 1;
-			}
-		});
-
-		return results;
-	};
-
-	const titleCase = function (str) {
-		var newstr = str.replaceAll('npc_','');
-		var newstr = str.replaceAll('shell_','');
-		newstr = newstr.replaceAll('_',' ');
-		return newstr
-			.split(' ')
-			.map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
-			.join(' ');
-	};
-
-	const generateRoll = function(name) {
-		const names = {
-			'underscore': name,
-			'dash': (name.replaceAll('_','-')),
-			'space': titleCase(name)
 		};
-
-		const attrOptions = {
-			'agility': {
-				query: '?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
-				skills: ['acrobatics','close_combat','stealth']
-			},
-			'awareness': {
-				query:'?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
-				skills: ['analysis','extraplanetary','observation','survival','thievery']
-			},
-			'brawn': {
-				query:'?{Attribute|Brawn,@{brawn}|Agility,@{agility}|Awareness,@{awareness}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
-				skills: ['athletics','resistance']
-			},
-			'coordination': {
-				query: '?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
-				skills: ['ballistics','pilot','spacecraft']
-			},
-			'intelligence': {
-				query: '?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}',
-				skills: ['education','hacking','medicine','psychology','science','tech']
-			},
-			'personality': {
-				query: '?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}',
-				skills: ['animal_handling','command','lifestyle','persuade']
-			},
-			'willpower': {
-				query: '?{Attribute|Willpower,@{willpower}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}}',
-				skills: ['discipline']
-			},
-			'npc_agility': {
-				query: '?{Attribute|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
-				skills: ['npc_movement']
-			},
-			'npc_awareness': {
-				query: '?{Attribute|Awareness,@{npc_awareness}|Agility,@{npc_agility}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
-				skills: ['npc_senses']
-			},
-			'npc_brawn': {
-				query: '?{Attribute|Brawn,@{npc_brawn}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
-				skills: ['npc_fortitude']
-			},
-			'npc_coordination': {
-				query: '?{Attribute|Coordination,@{npc_coordination}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
-				skills: ['npc_combat']
-			},
-			'npc_intelligence': {
-				query: '?{Attribute|Intelligence,@{npc_intelligence}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
-				skills: ['npc_technical']
-			},
-			'npc_personality': {
-				query: '?{Attribute|Personality,@{npc_personality}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Willpower,@{npc_willpower}}',
-				skills: ['npc_social']
-			},
-			'npc_willpower': {
-				query: '?{Attribute|Willpower,@{npc_willpower}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}}',
-				skills: ['npc_fortitude']
-			},
-			'shell_agility': {
-				query: '?{Attribute|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
-				skills: ['shell_movement']
-			},
-			'shell_awareness': {
-				query: '?{Attribute|Awareness,@{shell_awareness}|Agility,@{shell_agility}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
-				skills: ['shell_senses']
-			},
-			'shell_brawn': {
-				query: '?{Attribute|Brawn,@{shell_brawn}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
-				skills: ['shell_fortitude']
-			},
-			'shell_coordination': {
-				query: '?{Attribute|Coordination,@{shell_coordination}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
-				skills: ['shell_combat']
-			},
-			'shell_intelligence': {
-				query: '?{Attribute|Intelligence,@{shell_intelligence}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
-				skills: ['shell_technical']
-			},
-			'shell_personality': {
-				query: '?{Attribute|Personality,@{shell_personality}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Willpower,@{shell_willpower}}',
-				skills: ['shell_social']
-			},
-			'shell_willpower': {
-				query: '?{Attribute|Willpower,@{shell_willpower}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}}',
-				skills: ['shell_fortitude']
+	
+		var calcCombatDice = function (rolls) {
+			let results = {
+				sum: 0,
+				effect: 0
+			}
+	
+			rolls.forEach(roll => {
+				switch(roll) {
+					case 1:
+						results.sum = results.sum + 1
+						break;
+					case 2:
+						results.sum = results.sum + 2
+						break;
+					case 6:
+						results.effect = results.effect + 1
+						break;
+					default:
+						break;
+				}
+			});
+	
+			return results;
+		};
+	
+		var attrActions = {
+			skills: [
+				'acrobatics',
+				'close_combat',
+				'stealth',
+				'analysis',
+				'extraplanetary',
+				'observation',
+				'survival',
+				'thievery',
+				'athletics',
+				'resistance',
+				'ballistics',
+				'pilot',
+				'spacecraft',
+				'education',
+				'hacking',
+				'medicine',
+				'psychology',
+				'science',
+				'tech',
+				'animal_handling',
+				'command',
+				'lifestyle',
+				'persuade',
+				'discipline',
+				'npc_combat',
+				'npc_movement',
+				'npc_social',
+				'npc_fortitude',
+				'npc_senses',
+				'npc_technical',
+				'shell_combat',
+				'shell_movement',
+				'shell_social',
+				'shell_fortitude',
+				'shell_senses',
+				'shell_technical',
+				'weapon_damage'
+			],
+	
+			attributes: [
+				'agility',
+				'awareness',
+				'brawn',
+				'coordination',
+				'intelligence',
+				'personality',
+				'willpower',
+			]
+		};
+	
+		attrActions['all'] = [...attrActions.skills, ...attrActions.attributes];
+	
+		const attrActionsRepeating = {
+			'weapons': {
+				'attributes': [
+					'weapon_name',
+					'weapon_range',
+					'weapon_damage_fixed',
+					'weapon_damage_dice',
+					'weapon_damage_action',
+					'weapon_burst',
+					'weapon_size',
+					'weapon_ammo',
+					'weapon_qualities',
+					'weapon_type',
+					'weapon_type',
+					'weapon_type',
+					'weapon_type',
+					'weapon_infowar_roll',
+					'weapon_psywar_roll',
+					'weapon_melee_roll',
+					'weapon_ranged_roll',
+					'weapon_reloads'
+				],
+				'actions': [
+					'weapon_damage',
+					'weapon_attack',
+					'weapon_infowar'
+				]
 			}
 		};
-
-		var roll = "&{template:skillroll} {{target_number=[[QUERY_ATTRIBUTE[Attribute]+@{skill_SKILL_NAME_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_SKILL_NAME_foc}]]]]}} {{header=SKILLNAME Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_SKILL_NAME_foc}]]}}";
-
-		if ((attrActions.attributes).includes(name)) {
-			roll = "&{template:skillroll} {{target_number=[[@{ATTR_NAME}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=ATTRNAME Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}";
-			roll = roll.replaceAll('ATTR_NAME', names.underscore);
-			roll = roll.replaceAll('ATTRNAME', names.space);
+	
+		const getRepeatingActions = function (sectionDetails) {
+			let attrs = {};
+			Object.entries(sectionDetails).forEach(([key, value], index) => {
+				getSectionIDs(key, (idarray) => {
+					let getList = (sectionDetails[key]).actions;
+					idarray.forEach((rowId) => {
+						getList.forEach((attr) => {
+							let strAttr = `repeating_${key}_${rowId}_${attr}_action`;
+							let s = attr.replaceAll('_','-');
+							let strAct = `repeating_${key}_${rowId}_${s}-action`;
+							attrs[strAttr] = strAct;
+						});
+					});
+				});
+			});
+			return attrs;
+		};
+	
+		var updateActionButtons = function () {
+			// I don't know how to use asynchronous functions, so I'll handle the repeating and static attributes separately.
+			// Repeating sections
+			const attrRepeatingActions = getRepeatingActions(attrActionsRepeating);
+			getAttrs(["character_name", ...(Object.keys(attrRepeatingActions))], (v) => {
+				let attrsToChange = {};
+				Object.entries(attrRepeatingActions).forEach(([key, value], index) => {
+					let strAttr = (Object.keys(attrRepeatingActions))[index];
+					let strAct = attrRepeatingActions[key];
+					//strAct = strAct.replaceAll('_','-');
+					attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "}";
+				});
+				setAttrs(attrsToChange);
+			});
+	
+			// Static sections
+			getAttrs(["character_name", ...(attrActions.all)], function(v) {
+				let attrsToChange = {};
+				(attrActions.all).forEach(attr => {
+					let strAct = attr.replaceAll('_','-');
+					let strAttr = attr + "_action";
+					attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "-action}";
+				});
+				setAttrs(attrsToChange);
+			});
+		};
+	
+		const calcSkillRoll = function (rolls, tn, foc) {
+			let results = {
+				successes: 0
+			}
+	
+			rolls.forEach(roll => {
+				if (roll <= tn) {
+					results.successes += 1;
+				}
+				if (roll <= foc) {
+					results.successes += 1;
+				}
+			});
+	
+			return results;
+		};
+	
+		const titleCase = function (str) {
+			var newstr = str.replaceAll('npc_','');
+			var newstr = str.replaceAll('shell_','');
+			newstr = newstr.replaceAll('_',' ');
+			return newstr
+				.split(' ')
+				.map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+				.join(' ');
+		};
+	
+		const generateSkillRoll = function(name) {
+			const names = {
+				'underscore': name,
+				'dash': (name.replaceAll('_','-')),
+				'space': titleCase(name)
+			};
+	
+			const attrOptions = {
+				'agility': {
+					query: '?{Attribute|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
+					skills: ['acrobatics','close_combat','stealth']
+				},
+				'awareness': {
+					query:'?{Attribute|Awareness,@{awareness}|Agility,@{agility}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
+					skills: ['analysis','extraplanetary','observation','survival','thievery']
+				},
+				'brawn': {
+					query:'?{Attribute|Brawn,@{brawn}|Agility,@{agility}|Awareness,@{awareness}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
+					skills: ['athletics','resistance']
+				},
+				'coordination': {
+					query: '?{Attribute|Coordination,@{coordination}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Intelligence,@{intelligence}|Personality,@{personality}|Willpower,@{willpower}}',
+					skills: ['ballistics','pilot','spacecraft']
+				},
+				'intelligence': {
+					query: '?{Attribute|Intelligence,@{intelligence}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Personality,@{personality}|Willpower,@{willpower}}',
+					skills: ['education','hacking','medicine','psychology','science','tech']
+				},
+				'personality': {
+					query: '?{Attribute|Personality,@{personality}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Willpower,@{willpower}}',
+					skills: ['animal_handling','command','lifestyle','persuade']
+				},
+				'willpower': {
+					query: '?{Attribute|Willpower,@{willpower}|Agility,@{agility}|Awareness,@{awareness}|Brawn,@{brawn}|Coordination,@{coordination}|Intelligence,@{intelligence}|Personality,@{personality}}',
+					skills: ['discipline']
+				},
+				'npc_agility': {
+					query: '?{Attribute|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+					skills: ['npc_movement']
+				},
+				'npc_awareness': {
+					query: '?{Attribute|Awareness,@{npc_awareness}|Agility,@{npc_agility}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+					skills: ['npc_senses']
+				},
+				'npc_brawn': {
+					query: '?{Attribute|Brawn,@{npc_brawn}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+					skills: ['npc_fortitude']
+				},
+				'npc_coordination': {
+					query: '?{Attribute|Coordination,@{npc_coordination}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+					skills: ['npc_combat']
+				},
+				'npc_intelligence': {
+					query: '?{Attribute|Intelligence,@{npc_intelligence}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Personality,@{npc_personality}|Willpower,@{npc_willpower}}',
+					skills: ['npc_technical']
+				},
+				'npc_personality': {
+					query: '?{Attribute|Personality,@{npc_personality}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Willpower,@{npc_willpower}}',
+					skills: ['npc_social']
+				},
+				'npc_willpower': {
+					query: '?{Attribute|Willpower,@{npc_willpower}|Agility,@{npc_agility}|Awareness,@{npc_awareness}|Brawn,@{npc_brawn}|Coordination,@{npc_coordination}|Intelligence,@{npc_intelligence}|Personality,@{npc_personality}}',
+					skills: ['npc_fortitude']
+				},
+				'shell_agility': {
+					query: '?{Attribute|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+					skills: ['shell_movement']
+				},
+				'shell_awareness': {
+					query: '?{Attribute|Awareness,@{shell_awareness}|Agility,@{shell_agility}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+					skills: ['shell_senses']
+				},
+				'shell_brawn': {
+					query: '?{Attribute|Brawn,@{shell_brawn}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+					skills: ['shell_fortitude']
+				},
+				'shell_coordination': {
+					query: '?{Attribute|Coordination,@{shell_coordination}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+					skills: ['shell_combat']
+				},
+				'shell_intelligence': {
+					query: '?{Attribute|Intelligence,@{shell_intelligence}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Personality,@{shell_personality}|Willpower,@{shell_willpower}}',
+					skills: ['shell_technical']
+				},
+				'shell_personality': {
+					query: '?{Attribute|Personality,@{shell_personality}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Willpower,@{shell_willpower}}',
+					skills: ['shell_social']
+				},
+				'shell_willpower': {
+					query: '?{Attribute|Willpower,@{shell_willpower}|Agility,@{shell_agility}|Awareness,@{shell_awareness}|Brawn,@{shell_brawn}|Coordination,@{shell_coordination}|Intelligence,@{shell_intelligence}|Personality,@{shell_personality}}',
+					skills: ['shell_fortitude']
+				}
+			};
+	
+			var roll = "&{template:skillroll} {{target_number=[[QUERY_ATTRIBUTE[Attribute]+@{skill_SKILL_NAME_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_SKILL_NAME_foc}]]]]}} {{header=SKILLNAME Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_SKILL_NAME_foc}]]}}";
+	
+			if ((attrActions.attributes).includes(name)) {
+				roll = "&{template:skillroll} {{target_number=[[@{ATTR_NAME}[Attribute]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[1]]]]}} {{header=ATTRNAME Check}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[0]]}}";
+				roll = roll.replaceAll('ATTR_NAME', names.underscore);
+				roll = roll.replaceAll('ATTRNAME', names.space);
+				return roll;
+			} else if (name.indexOf('npc_') != -1) {
+				roll = "&{template:skillroll} {{target_number=[[QUERY_ATTRIBUTE[Attribute]+@{SKILL_NAME_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{SKILL_NAME_foc}]]]]}} {{header=SKILLNAME Check}} {{subheader=@{npc_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{SKILL_NAME_foc}]]}}";
+			} else if (name.indexOf('shell_') != -1) {
+				roll = "&{template:skillroll} {{target_number=[[QUERY_ATTRIBUTE[Attribute]+@{SKILL_NAME_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{SKILL_NAME_foc}]]]]}} {{header=SKILLNAME Check}} {{subheader=@{shell_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{SKILL_NAME_foc}]]}}";
+			}
+	
+			var attrQuery = '';
+	
+			Object.entries(attrOptions).find(([key, value]) => {
+				if ((value.skills).includes(name)) {
+					attrQuery = value.query;
+				}
+			});
+	
+			roll = roll.replaceAll('QUERY_ATTRIBUTE', attrQuery);
+			roll = roll.replaceAll('SKILL_NAME', names.underscore);
+			roll = roll.replaceAll('SKILLNAME', names.space);
+	
 			return roll;
-		} else if (name.indexOf('npc_') != -1) {
-			roll = "&{template:skillroll} {{target_number=[[QUERY_ATTRIBUTE[Attribute]+@{SKILL_NAME_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{SKILL_NAME_foc}]]]]}} {{header=SKILLNAME Check}} {{subheader=@{npc_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{SKILL_NAME_foc}]]}}";
-		} else if (name.indexOf('shell_') != -1) {
-			roll = "&{template:skillroll} {{target_number=[[QUERY_ATTRIBUTE[Attribute]+@{SKILL_NAME_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{SKILL_NAME_foc}]]]]}} {{header=SKILLNAME Check}} {{subheader=@{shell_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{SKILL_NAME_foc}]]}}";
-		}
-
-		var attrQuery = '';
-
-		Object.entries(attrOptions).find(([key, value]) => {
-			if ((value.skills).includes(name)) {
-				attrQuery = value.query;
-			}
-		});
-
-		roll = roll.replaceAll('QUERY_ATTRIBUTE', attrQuery);
-		roll = roll.replaceAll('SKILL_NAME', names.underscore);
-		roll = roll.replaceAll('SKILLNAME', names.space);
-
-		return roll;
-	};
-
-	(attrActions.all).forEach((attr) => { // Event listener for all rolling buttons.
-		const attrAct = attr.replaceAll('_','-');
-		on(`clicked:${attrAct}-action`, (info) => {
-			const roll = generateRoll(attr);
-			startRoll(roll, (allRolls) => {
-				const computed = calcSkillRoll(
-					allRolls.results.roll.dice, 
-					allRolls.results.target_number.result, 
-					allRolls.results.skill_foc.result
-				).successes;
-				const computedResults = {
-					roll: computed
-				};
-				
-				finishRoll(
-					allRolls.rollId,
-					computedResults
-				);
-			});
-		});
-	});
-
-	const actsRepeating = [
-		'repeating_weapons:weapon-damage-action'
-	];
-
-	const parseRepeatingSection = function (sourceAttribute, triggerAttribute) {
-		let result = {};
-
-		const reRowId = /(?<=_-)[\w\d]*(?=_)/s;
-		result['rowId'] = (reRowId.exec(sourceAttribute))[0];
-
-		const reSection = /[\w\d]*(?=:)/s;
-		result['section'] = (reSection.exec(triggerAttribute))[0];
-
-		const reAction = /(?<=:)[\w\d\-]*$/s;
-		result['action'] = (reAction.exec(triggerAttribute))[0];
-		return result;
-	};
-
-	actsRepeating.forEach((attr) => { // Event listener for all rolling buttons.
-		on(`clicked:${attr}`, (info) => {
-			const sectionInfo = parseRepeatingSection(info.sourceAttribute, attr);
-			//const roll = generateCdRoll(sectionInfo);
-			const roll = `&{template:combatdice} {{header=@{${sectionInfo.section}_-${sectionInfo.rowId}_weapon_name} Damage}} {{subheader=Vigour attack}} {{roll=[[[[?{Number of dice|@{${sectionInfo.section}_-${sectionInfo.rowId}_weapon_damage_dice}}+@{damage_bonus_ranged}]]d6>6cf0cs6[Weapon damage]]]}} {{modifier=[[?{Modifier|@{${sectionInfo.section}_-${sectionInfo.rowId}_weapon_damage_fixed}}[Weapon bonus]+@{damage_bonus_ranged_static}[Ranged bonus]]]}}`;
-			console.log(sectionInfo);
-			startRoll(roll, (allRolls) => {
-			
-				const computed = calcCombatDice(allRolls.results.roll.dice);
+		};
 	
-				const computedResults = {
-					roll: computed.sum
-				};
-		
-				finishRoll(allRolls.rollId, computedResults);
-			});
-		});
-	});
+		const actsRepeating = [
+			'repeating_weapons:weapon-damage-action',
+			'repeating_weapons:weapon-infowar-action'
+		];
+	
+		var rowInfo = class {
+			reRowId = /(?<=_-)[\w\d]*(?=_)/s;
+			reSection = /^[\w\d]*(?=:)/s;
+			reAction = /(?<=:)[\w\d\-]*$/s;
+	
+			constructor(triggerAttribute, sourceAttribute) {
+				this.rowId = (reRowId.exec(sourceAttribute))[0];
+				this.section = (reSection.exec(triggerAttribute))[0];
+				this.action = (reAction.exec(triggerAttribute))[0];
+				this.sourceAttribute = sourceAttribute;
+			}
+		};
+	
+		const generateAttackRoll = function (action, section, rowId) {
+			const re = /(damage|infowar|psywar|melee|ranged)/g;
+			const actionType = (re.exec(action))[0];
+			var rollParams = {
+				'type': actionType,
+				'attribute': '',
+				'skill': ''
+			};
+	
+			switch (actionType) {
+				case 'damage':
+					break;
+				case 'infowar':
+					rollParams.attribute = '@{intelligence}';
+					rollParams.skill = 'hacking';
+					break;
+				case 'psywar':
+					rollParams.attribute = '@{personality}';
+					rollParams.skill = 'persuade';
+					break;
+				case 'melee':
+					rollParams.attribute = '@{brawn}';
+					rollParams.skill = 'close_combat'
+					break;
+				case 'ranged':
+					rollParams.attribute = '@{awareness}';
+					rollParams.skill = 'ballistics';
+					break;
+			}
+	
+			const rollStr = `&{template:skillroll} {{target_number=[[${rollParams.attribute}[Attribute]+@{skill_${rollParams.skill}_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_${rollParams.skill}_foc}]]]]}} {{header=@{${section}_-${rowId}_weapon_name} Attack}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_${rollParams.skill}_foc}]]}} {{damage_roll=[Roll damage](~repeating_weapons_weapon_damage)}}`;
+	
+			return rollStr;
+		};
+	
+		const generateCdRoll = function (rollInfo) {
+			var mod = {
+				'fixed': {
+					'weapon': '',
+					'bonusAttr': ''
+				},
+				'dice': {
+					'weapon': '',
+					'bonusAttr': ''
+				}
+			};
+	
+			if (rollInfo.type === 'weapon') {
+			}
+	
+			var templateParams = {
+				'template': `&{template:combatdice}`,
+				'header': `{{header=${rollInfo.sourceName} Damage}}`,
+				'subheader': `{{subheader=@{character_name}}}`,
+				'roll': `{{roll=[[?{Number of dice|${rollInfo.dice.count}}d6>6cf0cs6]]}}`,
+				'modifier': `{{modifier=[[?{Modifier|2}[Modifier]]]}}`
+			};
+	
+			var roll = '';
+	
+			return roll;
+	
+			// &{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}
+		};
+	
+		const getRollType = function(triggerAttribute) {
+		};
+	
+		return {
+			RegisterEventHandlers: registerEventHandlers
+		};
+	
+	}());
+	
+	Infinity2d20.RegisterEventHandlers();
 </script>
