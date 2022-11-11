@@ -4304,10 +4304,10 @@
 
 <script type="text/worker">
 	var Infinity2d20 = Infinity2d20 || (function() {
-		const version = 1.1;
+		const version = 1.2;
 	
 		// Array of all attribute names present on version 0.
-		var attrListOld = [
+		const attrListOld = [
 			"character_name",
 			"MDB",
 			"PDB",
@@ -4654,7 +4654,7 @@
 		];
 	
 		// Array of all attribute names present on the current sheet.
-		var attrListNew = [
+		const attrListNew = [
 			"type_tab",
 			"tab",
 			"character_name",
@@ -5080,7 +5080,7 @@
 		];
 	
 		// List of repeating sections from v0.
-		var repeating_section_details = [
+		const repeating_section_details = [
 			{
 				section: 'repeating_talents',
 				fields: [
@@ -5141,16 +5141,115 @@
 		];
 	
 		// BaseGet is a combination of all attributes on v0 and above.
-		var baseGet = [...attrListOld, ...attrListNew];
+		const baseGet = [...attrListOld, ...attrListNew];
 	
-		// Code below is by Scott C., taken from his sheet for Genefunk 2090.
-		// Source: https://github.com/Roll20/roll20-character-sheets/blob/4c930e6ee3ceae8dd777e483d7ee8c801fad754a/Genefunk%202090/genefunk2090.js#L1788
+		const attrActions = {
+			skills: [
+				'acrobatics',
+				'close_combat',
+				'stealth',
+				'analysis',
+				'extraplanetary',
+				'observation',
+				'survival',
+				'thievery',
+				'athletics',
+				'resistance',
+				'ballistics',
+				'pilot',
+				'spacecraft',
+				'education',
+				'hacking',
+				'medicine',
+				'psychology',
+				'science',
+				'tech',
+				'animal_handling',
+				'command',
+				'lifestyle',
+				'persuade',
+				'discipline',
+				'npc_combat',
+				'npc_movement',
+				'npc_social',
+				'npc_fortitude',
+				'npc_senses',
+				'npc_technical',
+				'shell_combat',
+				'shell_movement',
+				'shell_social',
+				'shell_fortitude',
+				'shell_senses',
+				'shell_technical',
+				'weapon_damage'
+			],
 	
-		var openSheet = function() {
+			attributes: [
+				'agility',
+				'awareness',
+				'brawn',
+				'coordination',
+				'intelligence',
+				'personality',
+				'willpower',
+			]
+		};
+	
+		const attrActionsAll = [...attrActions.skills, ...attrActions.attributes];
+	
+		const attrActionsRepeating = {
+			'weapons': {
+				'attributes': [
+					'weapon_name',
+					'weapon_range',
+					'weapon_damage_fixed',
+					'weapon_damage_dice',
+					'weapon_damage_action',
+					'weapon_burst',
+					'weapon_size',
+					'weapon_ammo',
+					'weapon_qualities',
+					'weapon_type',
+					'weapon_type',
+					'weapon_type',
+					'weapon_type',
+					'weapon_infowar_roll',
+					'weapon_psywar_roll',
+					'weapon_melee_roll',
+					'weapon_ranged_roll',
+					'weapon_reloads'
+				],
+				'actions': [
+					'weapon_damage',
+					'weapon_attack',
+					'weapon_infowar'
+				]
+			}
+		};
+	
+		const actsRepeating = [
+			'repeating_weapons:weapon-damage-action',
+			'repeating_weapons:weapon-infowar-action'
+		];
+		
+		class rowInfo {
+			reRowId = /(?<=_-)[\w\d]*(?=_)/s;
+			reSection = /^[\w\d]*(?=:)/s;
+			reAction = /(?<=:)[\w\d\-]*$/s;
+	
+			constructor(triggerAttribute, sourceAttribute) {
+				this.rowId = (reRowId.exec(sourceAttribute))[0];
+				this.section = (reSection.exec(triggerAttribute))[0];
+				this.action = (reAction.exec(triggerAttribute))[0];
+				this.sourceAttribute = sourceAttribute;
+			}
+		};
+	
+		function openSheet () {
 			getSections(updateSheet,baseGet);
 		};
 	
-		var getSections = function (callback,getArray,trigger,sections,queue) {
+		function getSections (callback,getArray,trigger,sections,queue) {
 			queue = queue || JSON.parse(JSON.stringify(repeating_section_details));
 			getArray = getArray || [];
 			sections = sections || {};
@@ -5173,7 +5272,7 @@
 	
 		};
 	
-		var updateSheet = function (getArray,sections){
+		function updateSheet (getArray,sections){
 			const setObj = {};
 			getAttrs([...getArray,'sheet_version'],(attr)=>{
 				console.log("Sheet version detected: " + attr.sheet_version)
@@ -5187,11 +5286,11 @@
 			});
 		};
 	
-		var set = function (obj,callback) {
+		function set (obj,callback) {
 			setAttrs(obj,{silent:true},callback);
 		};
 	
-		var updateTo1_0 = function (attrCurrent, setObj) {
+		function updateTo1_0 (attrCurrent, setObj) {
 			console.log("Starting migration to 1.1");
 			// Migrate the values of each old attribute to their new equivalent.
 			// setAttrs takes objects with the property = attribute name and the value = new value.
@@ -5655,102 +5754,17 @@
 			attrCurrent = {...attrCurrent, ...setObj};
 		};
 	
-		let registerEventHandlers = function() {
-			on('sheet:opened', openSheet);
-	
-			on("sheet:opened change:character_name change:repeating_weapons", updateActionButtons);
-	
-			on('clicked:attr-inc', function(info) {
-				const split = (info.htmlAttributes.value).split(",");
-				let attr = {
-					from: {
-						name: split[0],
-						inc: split[1]
-					},
-					to: {
-						name: (split.length > 2) ? split[2] : "",
-						inc: (split.length > 2) ? split[3] : 0
-					}
-				};
-		
-				getAttrs([attr.from.name, attr.to.name], function(values) {
-					let setObj = {};
-					if ((attr.from.inc == '-1') && (values[attr.from.name] == '0')) {
-						return;
-					}
-					setObj[attr.from.name] = Number(values[attr.from.name]) + Number(attr.from.inc);
-					if (attr.to.name !== "") {
-						setObj[attr.to.name] = Number(values[attr.to.name]) + Number(attr.to.inc);
-					}
-					setAttrs(setObj);
-				});
-			});
-	
-			on('clicked:rollCombatDice', (info) => {
-				startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
-					
-					const computed = calcCombatDice(allRolls.results.roll.dice);
-		
-					const computedResults = {
-						roll: computed.sum
-					};
-		
-					finishRoll(allRolls.rollId, computedResults);
-				});
-			});
-	
-			(attrActions.all).forEach((attr) => { // Event listener for all rolling buttons.
-				const attrAct = attr.replaceAll('_','-');
-				on(`clicked:${attrAct}-action`, (info) => {
-					const roll = generateSkillRoll(attr);
-					startRoll(roll, (allRolls) => {
-						const computed = calcSkillRoll(
-							allRolls.results.roll.dice, 
-							allRolls.results.target_number.result, 
-							allRolls.results.skill_foc.result
-						).successes;
-						const computedResults = {
-							roll: computed
-						};
-						
-						finishRoll(
-							allRolls.rollId,
-							computedResults
-						);
-					});
-				});
-			});
-	
-			actsRepeating.forEach((attr) => { // Event listener for all rolling buttons in repeating sections.
-				on(`clicked:${attr}`, (info) => {
-					console.log(info);
-					
-					// Determine what type of roll this is: skill check or damage?
-						// If skill check, is this an attack?
-							// If so, then the header is the weapon name. Also need to get the ammo and qualities.
-							// If not, header is the skill name.
-						// If damage in a repeating section, it has to be an attack. Header is weapon name.
-					const roll = generateAttackRoll(attr, infoAction.section, infoAction.rowId);
-					startRoll(roll, (allRolls) => {
-						const computed = calcSkillRoll(
-							allRolls.results.roll.dice, 
-							allRolls.results.target_number.result, 
-							allRolls.results.skill_foc.result
-						).successes;
-						const computedResults = {
-							roll: computed
-						};
-						
-						finishRoll(
-							allRolls.rollId,
-							computedResults
-						);
-					});
-				});
-			});
+		function titleCase (str) {
+			var newstr = str.replaceAll('npc_','');
+			var newstr = str.replaceAll('shell_','');
+			newstr = newstr.replaceAll('_',' ');
+			return newstr
+				.split(' ')
+				.map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+				.join(' ');
 		};
 	
-		var calcCombatDice = function (rolls) {
+		function calcCombatDice (rolls) {
 			let results = {
 				sum: 0,
 				effect: 0
@@ -5775,136 +5789,7 @@
 			return results;
 		};
 	
-		var attrActions = {
-			skills: [
-				'acrobatics',
-				'close_combat',
-				'stealth',
-				'analysis',
-				'extraplanetary',
-				'observation',
-				'survival',
-				'thievery',
-				'athletics',
-				'resistance',
-				'ballistics',
-				'pilot',
-				'spacecraft',
-				'education',
-				'hacking',
-				'medicine',
-				'psychology',
-				'science',
-				'tech',
-				'animal_handling',
-				'command',
-				'lifestyle',
-				'persuade',
-				'discipline',
-				'npc_combat',
-				'npc_movement',
-				'npc_social',
-				'npc_fortitude',
-				'npc_senses',
-				'npc_technical',
-				'shell_combat',
-				'shell_movement',
-				'shell_social',
-				'shell_fortitude',
-				'shell_senses',
-				'shell_technical',
-				'weapon_damage'
-			],
-	
-			attributes: [
-				'agility',
-				'awareness',
-				'brawn',
-				'coordination',
-				'intelligence',
-				'personality',
-				'willpower',
-			]
-		};
-	
-		attrActions['all'] = [...attrActions.skills, ...attrActions.attributes];
-	
-		const attrActionsRepeating = {
-			'weapons': {
-				'attributes': [
-					'weapon_name',
-					'weapon_range',
-					'weapon_damage_fixed',
-					'weapon_damage_dice',
-					'weapon_damage_action',
-					'weapon_burst',
-					'weapon_size',
-					'weapon_ammo',
-					'weapon_qualities',
-					'weapon_type',
-					'weapon_type',
-					'weapon_type',
-					'weapon_type',
-					'weapon_infowar_roll',
-					'weapon_psywar_roll',
-					'weapon_melee_roll',
-					'weapon_ranged_roll',
-					'weapon_reloads'
-				],
-				'actions': [
-					'weapon_damage',
-					'weapon_attack',
-					'weapon_infowar'
-				]
-			}
-		};
-	
-		const getRepeatingActions = function (sectionDetails) {
-			let attrs = {};
-			Object.entries(sectionDetails).forEach(([key, value], index) => {
-				getSectionIDs(key, (idarray) => {
-					let getList = (sectionDetails[key]).actions;
-					idarray.forEach((rowId) => {
-						getList.forEach((attr) => {
-							let strAttr = `repeating_${key}_${rowId}_${attr}_action`;
-							let s = attr.replaceAll('_','-');
-							let strAct = `repeating_${key}_${rowId}_${s}-action`;
-							attrs[strAttr] = strAct;
-						});
-					});
-				});
-			});
-			return attrs;
-		};
-	
-		var updateActionButtons = function () {
-			// I don't know how to use asynchronous functions, so I'll handle the repeating and static attributes separately.
-			// Repeating sections
-			const attrRepeatingActions = getRepeatingActions(attrActionsRepeating);
-			getAttrs(["character_name", ...(Object.keys(attrRepeatingActions))], (v) => {
-				let attrsToChange = {};
-				Object.entries(attrRepeatingActions).forEach(([key, value], index) => {
-					let strAttr = (Object.keys(attrRepeatingActions))[index];
-					let strAct = attrRepeatingActions[key];
-					//strAct = strAct.replaceAll('_','-');
-					attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "}";
-				});
-				setAttrs(attrsToChange);
-			});
-	
-			// Static sections
-			getAttrs(["character_name", ...(attrActions.all)], function(v) {
-				let attrsToChange = {};
-				(attrActions.all).forEach(attr => {
-					let strAct = attr.replaceAll('_','-');
-					let strAttr = attr + "_action";
-					attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "-action}";
-				});
-				setAttrs(attrsToChange);
-			});
-		};
-	
-		const calcSkillRoll = function (rolls, tn, foc) {
+		function calcSkillRoll (rolls, tn, foc) {
 			let results = {
 				successes: 0
 			}
@@ -5921,17 +5806,7 @@
 			return results;
 		};
 	
-		const titleCase = function (str) {
-			var newstr = str.replaceAll('npc_','');
-			var newstr = str.replaceAll('shell_','');
-			newstr = newstr.replaceAll('_',' ');
-			return newstr
-				.split(' ')
-				.map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
-				.join(' ');
-		};
-	
-		const generateSkillRoll = function(name) {
+		function generateSkillRoll (name) {
 			const names = {
 				'underscore': name,
 				'dash': (name.replaceAll('_','-')),
@@ -6053,25 +5928,7 @@
 			return roll;
 		};
 	
-		const actsRepeating = [
-			'repeating_weapons:weapon-damage-action',
-			'repeating_weapons:weapon-infowar-action'
-		];
-	
-		var rowInfo = class {
-			reRowId = /(?<=_-)[\w\d]*(?=_)/s;
-			reSection = /^[\w\d]*(?=:)/s;
-			reAction = /(?<=:)[\w\d\-]*$/s;
-	
-			constructor(triggerAttribute, sourceAttribute) {
-				this.rowId = (reRowId.exec(sourceAttribute))[0];
-				this.section = (reSection.exec(triggerAttribute))[0];
-				this.action = (reAction.exec(triggerAttribute))[0];
-				this.sourceAttribute = sourceAttribute;
-			}
-		};
-	
-		const generateAttackRoll = function (action, section, rowId) {
+		function generateAttackRoll (action, section, rowId) {
 			const re = /(damage|infowar|psywar|melee|ranged)/g;
 			const actionType = (re.exec(action))[0];
 			var rollParams = {
@@ -6106,7 +5963,7 @@
 			return rollStr;
 		};
 	
-		const generateCdRoll = function (rollInfo) {
+		function generateCdRoll (rollInfo) {
 			var mod = {
 				'fixed': {
 					'weapon': '',
@@ -6136,14 +5993,154 @@
 			// &{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}
 		};
 	
-		const getRollType = function(triggerAttribute) {
+		function getRollType (triggerAttribute) {
+		};
+	
+		function getRepeatingActions (sectionDetails) {
+			let attrs = {};
+			Object.entries(sectionDetails).forEach(([key, value], index) => {
+				getSectionIDs(key, (idarray) => {
+					let getList = (sectionDetails[key]).actions;
+					idarray.forEach((rowId) => {
+						getList.forEach((attr) => {
+							let strAttr = `repeating_${key}_${rowId}_${attr}_action`;
+							let s = attr.replaceAll('_','-');
+							let strAct = `repeating_${key}_${rowId}_${s}-action`;
+							attrs[strAttr] = strAct;
+						});
+					});
+				});
+			});
+			return attrs;
+		};
+	
+		function updateActionButtons () {
+			// I don't know how to use asynchronous functions, so I'll handle the repeating and static attributes separately.
+			// Repeating sections
+			const attrRepeatingActions = getRepeatingActions(attrActionsRepeating);
+			getAttrs(["character_name", ...(Object.keys(attrRepeatingActions))], (v) => {
+				let attrsToChange = {};
+				Object.entries(attrRepeatingActions).forEach(([key, value], index) => {
+					let strAttr = (Object.keys(attrRepeatingActions))[index];
+					let strAct = attrRepeatingActions[key];
+					//strAct = strAct.replaceAll('_','-');
+					attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "}";
+				});
+				setAttrs(attrsToChange);
+			});
+	
+			// Static sections
+			getAttrs(["character_name", ...(attrActionsAll)], function(v) {
+				let attrsToChange = {};
+				(attrActionsAll).forEach(attr => {
+					let strAct = attr.replaceAll('_','-');
+					let strAttr = attr + "_action";
+					attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "-action}";
+				});
+				setAttrs(attrsToChange);
+			});
+		};
+		
+		function registerEventHandlers () {
+			on('sheet:opened', openSheet);
+	
+			on("sheet:opened change:character_name change:repeating_weapons", updateActionButtons);
+	
+			on('clicked:attr-inc', function(info) {
+				const split = (info.htmlAttributes.value).split(",");
+				let attr = {
+					from: {
+						name: split[0],
+						inc: split[1]
+					},
+					to: {
+						name: (split.length > 2) ? split[2] : "",
+						inc: (split.length > 2) ? split[3] : 0
+					}
+				};
+		
+				getAttrs([attr.from.name, attr.to.name], function(values) {
+					let setObj = {};
+					if ((attr.from.inc == '-1') && (values[attr.from.name] == '0')) {
+						return;
+					}
+					setObj[attr.from.name] = Number(values[attr.from.name]) + Number(attr.from.inc);
+					if (attr.to.name !== "") {
+						setObj[attr.to.name] = Number(values[attr.to.name]) + Number(attr.to.inc);
+					}
+					setAttrs(setObj);
+				});
+			});
+	
+			on('clicked:rollCombatDice', (info) => {
+				startRoll("&{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}", (allRolls) => {
+					
+					const computed = calcCombatDice(allRolls.results.roll.dice);
+		
+					const computedResults = {
+						roll: computed.sum
+					};
+		
+					finishRoll(allRolls.rollId, computedResults);
+				});
+			});
+	
+			(attrActionsAll).forEach((attr) => { // Event listener for all rolling buttons.
+				const attrAct = attr.replaceAll('_','-');
+				on(`clicked:${attrAct}-action`, (info) => {
+					const roll = generateSkillRoll(attr);
+					startRoll(roll, (allRolls) => {
+						const computed = calcSkillRoll(
+							allRolls.results.roll.dice, 
+							allRolls.results.target_number.result, 
+							allRolls.results.skill_foc.result
+						).successes;
+						const computedResults = {
+							roll: computed
+						};
+						
+						finishRoll(
+							allRolls.rollId,
+							computedResults
+						);
+					});
+				});
+			});
+	
+			actsRepeating.forEach((attr) => { // Event listener for all rolling buttons in repeating sections.
+				on(`clicked:${attr}`, (info) => {
+					console.log(info);
+					
+					// Determine what type of roll this is: skill check or damage?
+						// If skill check, is this an attack?
+							// If so, then the header is the weapon name. Also need to get the ammo and qualities.
+							// If not, header is the skill name.
+						// If damage in a repeating section, it has to be an attack. Header is weapon name.
+					const roll = generateAttackRoll(attr, infoAction.section, infoAction.rowId);
+					startRoll(roll, (allRolls) => {
+						const computed = calcSkillRoll(
+							allRolls.results.roll.dice, 
+							allRolls.results.target_number.result, 
+							allRolls.results.skill_foc.result
+						).successes;
+						const computedResults = {
+							roll: computed
+						};
+						
+						finishRoll(
+							allRolls.rollId,
+							computedResults
+						);
+					});
+				});
+			});
 		};
 	
 		return {
-			RegisterEventHandlers: registerEventHandlers
+			'registerEventHandlers': registerEventHandlers
 		};
 	
 	}());
 	
-	Infinity2d20.RegisterEventHandlers();
+	Infinity2d20.registerEventHandlers();
 </script>
