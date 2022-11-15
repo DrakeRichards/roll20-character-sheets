@@ -835,6 +835,10 @@ var Infinity2d20 = Infinity2d20 || (function() {
     const baseGet = [...attrListOld, ...attrListNew]; // Combination of all attributes on v0 and above.
 
     const attrActions = {
+        attributes: [
+            {name: ''}
+        ],
+
         skills: [
             'acrobatics_action',
             'close_combat_action',
@@ -883,30 +887,67 @@ var Infinity2d20 = Infinity2d20 || (function() {
             'intelligence_action',
             'personality_action',
             'willpower_action',
+        ],
+
+        repeating: [
+            {
+                name: 'repeating_weapons',
+                actions: [
+                    'weapon_damage_action',
+                    'weapon_infowar_action',
+                    'weapon_psywar_action',
+                    'weapon_melee_action',
+                    'weapon_ranged_action'
+                ]
+            }
         ]
     };
 
-    const attrActionsStatic = [...attrActions.skills, ...attrActions.attributes];
+    const actActions = new actions(attrActions.skills, attrActions.attributes, attrActions.repeating);
 
-    const attrActionsRepeating = [
-        {
-            name: 'repeating_weapons',
-            actions: [
-                'weapon_damage_action',
-                'weapon_infowar_action',
-                'weapon_psywar_action',
-                'weapon_melee_action',
-                'weapon_ranged_action'
-            ]
+    class actions {
+        constructor(skills, attributes, repeating){
+            this.skills = skills.map(this.#dash);
+            this.attributes = attributes.map(this.#dash);
+            this.repeating = this.#expand(repeating);
+            this.static = [...this.skills, ...this.attributes]
+            this.all = [...this.static, ...this.repeating];
         }
-    ];
 
-    const actionsAll = getListenerActions(attrActionsStatic, attrActionsRepeating);
+        #dash = function (str) {
+            const s = str.replaceAll('_','-');
+            return s;
+        };
+
+        #expand = function (repeatingSections) {
+            let repeating = [];
+            repeatingSections.forEach((section) => {
+                // Convert repeating sections list to "repeating_section:character-action" format.
+                let actionArray = section.actions;
+                actionArray.forEach((action) => {
+                    let str = this.#dash(action);
+                    repeating.push(`${section.name}:${str}`);
+                });
+            });
+
+            return repeating;
+        };
+    }
+
+    class attrs {
+        constructor () {
+            this.attributes = [];
+            this.skills = [];
+            this.repeating = [];
+            this.migration = {};
+            this.skillDefaults = {};
+        }
+    }
     
     class eventTrigger {
         #reRowId = /(?<=_-)[\w\d]*(?=_)/s;
         #reSection = /^[\w\d]*(?=:)/s;
-        #reAction = /(?<=:)[\w\d\-]*$/s;
+        #reAction = /(?<=:|^)[\w\d\-]*$/s;
 
         /**
          * Parses the trigger info of an action button.
@@ -914,26 +955,93 @@ var Infinity2d20 = Infinity2d20 || (function() {
          * @param {str} sourceAttribute The sourceAttribute property from the eventInfo object.
          */
         constructor(triggerAttribute, sourceAttribute) {
-            console.log(triggerAttribute);
-            console.log(sourceAttribute);
             if (sourceAttribute === undefined) {
                 this.sourceAttribute = '';
-                this.rowId = ''
+                this.rowId = '';
+                this.section = '';
             } else {
                 this.sourceAttribute = sourceAttribute;
                 this.rowId = (this.#reRowId.exec(this.sourceAttribute))[0];
+                this.section = (this.#reSection.exec(triggerAttribute))[0];
             }
-            this.section = (this.#reSection.exec(triggerAttribute))[0] || '';
-            this.action = (this.#reAction.exec(triggerAttribute))[0] || '';
+            this.action = (this.#reAction.exec(triggerAttribute))[0];
+            if (this.rowId === '' && this.section === '') {this.isRepeating = false} else {this.isRepeating = true}
         }
-    };
+    }
 
     class roll {
         /**
          * Generates the roll text for a given event trigger.
          * @param {eventTrigger} eventTrigger The eventTrigger object for the trigger.
+         * @param {actions} actions Actions object containing the list of 
          */
-        constructor(eventTrigger) {
+        constructor(eventTrigger, actions) {
+            this.type = this.#type(eventTrigger);
+            console.log(this.type);
+        };
+
+        #type = function (eventTrigger, attributes) {
+            function dice (eventTrigger) {
+                let type = '';
+                
+                const re = /(damage|combat-dice)/;
+                const found = re.exec(eventTrigger.action);
+    
+                if (found === null) {
+                    type = 'd20';
+                } else {
+                    type = 'd6';
+                }
+    
+                return type;
+            };
+
+            function d6 (eventTrigger) {
+                let type = '';
+                const re = /damage/;
+                const found = (re.exec(eventTrigger.action))[0];
+                if (found !== undefined) {type = 'damage'} else {type = 'cd'};
+                return type;
+            };
+
+            function d20 (eventTrigger, attributes) {
+                let type = '';
+
+                const re = /(weapon-|attack-)/;
+                const found = re.exec(eventTrigger.action);
+
+                if (found !== null) {
+                    type = 'attack'
+                } else {
+                    if (eventTrigger.action in attributes) {
+                        type = 'attribute'
+                    } else {
+                        type = 'skill'
+                    }
+                }
+
+                return type;
+            };
+
+            let type = '';
+
+            const d = dice(eventTrigger);
+
+            switch (d) {
+                case 'd6':
+                    type = d6(eventTrigger);
+                    break;
+
+                case 'd20':
+                    type = d20(eventTrigger, attributes);
+                    break;
+            
+                default:
+                    type = 'unknown';
+                    break;
+            }
+
+            return type;
         };
 
         // Determine what type of roll this is: skill check or damage?
@@ -941,11 +1049,12 @@ var Infinity2d20 = Infinity2d20 || (function() {
             // If so, then the header is the weapon name. Also need to get the ammo and qualities.
             // If not, header is the skill name.
         // If damage in a repeating section, it has to be an attack. Header is weapon name.
-    };
+
+    }
 
     function openSheet () {
         getSections(updateSheet,baseGet);
-    };
+    }
 
     function getSections (callback,getArray,trigger,sections,queue) {
         queue = queue || JSON.parse(JSON.stringify(repeating_section_details));
@@ -968,7 +1077,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
             }
         });
 
-    };
+    }
 
     function updateSheet (getArray,sections){
         const setObj = {};
@@ -982,11 +1091,11 @@ var Infinity2d20 = Infinity2d20 || (function() {
                 set(setObj);
             } // Migrate from old sheet to new style.
         });
-    };
+    }
 
     function set (obj,callback) {
         setAttrs(obj,{silent:true},callback);
-    };
+    }
 
     function updateTo1_0 (attrCurrent, setObj) {
         console.log("Starting migration to 1.1");
@@ -1450,7 +1559,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
 
         setObj.sheet_version = 1.1;
         attrCurrent = {...attrCurrent, ...setObj};
-    };
+    }
 
     function titleCase (str) {
         var newstr = str.replaceAll('npc_','');
@@ -1460,7 +1569,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
             .split(' ')
             .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
             .join(' ');
-    };
+    }
 
     function calcCombatDice (rolls) {
         let results = {
@@ -1485,7 +1594,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
         });
 
         return results;
-    };
+    }
 
     /**
      * Calculates the number of successes on a skill roll.
@@ -1511,7 +1620,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
         });
 
         return {'roll': results.successes};
-    };
+    }
 
     function generateSkillRoll (name) {
         const names = {
@@ -1633,7 +1742,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
         roll = roll.replaceAll('SKILLNAME', names.space);
 
         return roll;
-    };
+    }
 
     function generateAttackRoll (action, section, rowId) {
         const re = /(damage|infowar|psywar|melee|ranged)/g;
@@ -1668,7 +1777,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
         const rollStr = `&{template:skillroll} {{target_number=[[${rollParams.attribute}[Attribute]+@{skill_${rollParams.skill}_exp}[Skill EXP]]]}} {{roll=[[?{Number of dice|2}d20cf>[[21-?{Complication Range|1}]]cs<[[@{skill_${rollParams.skill}_foc}]]]]}} {{header=@{${section}_-${rowId}_weapon_name} Attack}} {{subheader=@{character_name}, Difficulty ?{Difficulty|1}}} {{skill_foc=[[@{skill_${rollParams.skill}_foc}]]}} {{damage_roll=[Roll damage](~repeating_weapons_weapon_damage)}}`;
 
         return rollStr;
-    };
+    }
 
     function generateCdRoll (rollInfo) {
         var mod = {
@@ -1698,7 +1807,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
         return roll;
 
         // &{template:combatdice} {{header=Combat Dice}} {{subheader=Combat Dice}} {{roll=[[?{Number of dice|5}d6>6cf0]]}} {{modifier=[[?{Modifier|2}[Modifier]]]}}
-    };
+    }
 
     function getRepeatingActions (sectionDetails) {
         let attrs = {};
@@ -1717,14 +1826,14 @@ var Infinity2d20 = Infinity2d20 || (function() {
         });
         
         return attrs;
-    };
+    }
 
     function updateActionButtons () {
         // I don't know how to use asynchronous functions, so I'll handle the repeating and static attributes separately.
         // Static sections
-        getAttrs(["character_name", ...attrActionsStatic], function(v) {
+        getAttrs(["character_name", ...actActions.static], function(v) {
             let attrsToChange = {};
-            (attrActionsStatic).forEach(attr => {
+            (actActions.static).forEach(attr => {
                 let strAct = attr.replaceAll('_','-');
                 let strAttr = attr;
                 attrsToChange[strAttr] = "%{" + v["character_name"] + `|${strAct}` + "}";
@@ -1733,7 +1842,7 @@ var Infinity2d20 = Infinity2d20 || (function() {
         });
 
         // Repeating sections
-        const attrRepeatingActions = getRepeatingActions(attrActionsRepeating);
+        const attrRepeatingActions = getRepeatingActions(attrActions.repeating);
         getAttrs(["character_name", ...(Object.keys(attrRepeatingActions))], (v) => {
             let attrsToChange = {};
             Object.entries(attrRepeatingActions).forEach(([key, value], index) => {
@@ -1746,29 +1855,6 @@ var Infinity2d20 = Infinity2d20 || (function() {
         });
 
 
-    };
-
-    /**
-     * Generates an array of actions to listen for.
-     * @param {Array} attrActionsStatic Array of the name of each static attribute to listen for.
-     * @param {Object} attrActionsRepeating Object with the repeating field info.
-     * @returns Array of all actions to listen for.
-     */
-    function getListenerActions (attrActionsStatic, attrActionsRepeating) {
-        let repeating = [];
-        attrActionsRepeating.forEach((section) => {
-            // Convert repeating sections list to "repeating_section:character-action" format.
-            let actionArray = section.actions;
-            actionArray.forEach((action) => {
-                let str = action.replaceAll('_','-');
-                repeating.push(`${section.name}:${str}`);
-            });
-        });
-
-        const static = attrActionsStatic.map((a) => a.replaceAll('_','-'));
-        
-        const arr = [...static, ...repeating];
-        return arr;
     }
     
     function registerEventHandlers () {
@@ -1815,20 +1901,19 @@ var Infinity2d20 = Infinity2d20 || (function() {
             });
         });
 
-        actionsAll.forEach((action) => { // Event listener for all rolling buttons.
+        actActions.forEach((action) => { // Event listener for all rolling buttons.
             // const attrAct = attr.replaceAll('_','-');
             on(`clicked:${action}`, (info) => {
-                console.log(info);
                 const triggerInfo = new eventTrigger(action, (info.sourceAttribute));
-                console.log(triggerInfo);
-                // const rollInfo = new roll(triggerInfo);
+                const rollInfo = new roll(triggerInfo);
+                console.log(rollInfo);
                 //startRoll(rollInfo.rollString, (allRolls) => {
                 //    const computed = calcSkillRoll(allRolls.results).successes;
                 //    finishRoll(allRolls.rollId, computed);
                 //});
             });
         });
-    };
+    }
 
     return {
         'registerEventHandlers': registerEventHandlers

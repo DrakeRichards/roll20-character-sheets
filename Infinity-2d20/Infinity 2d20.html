@@ -5207,12 +5207,26 @@
 		];
 	
 		const actionsAll = getListenerActions(attrActionsStatic, attrActionsRepeating);
+
+		const act = new actions(attrActions.skills, attrActions.attributes);
+
+		class actions {
+			constructor(skills, attributes){
+				this.skills = skills;
+				this.attributes = attributes;
+			}
+
+			#dash = function (str) {
+				const s = str.replaceAll('_','-');
+				return s;
+			};
+		};
 		
 		class eventTrigger {
 			#reRowId = /(?<=_-)[\w\d]*(?=_)/s;
 			#reSection = /^[\w\d]*(?=:)/s;
 			#reAction = /(?<=:|^)[\w\d\-]*$/s;
-
+	
 			/**
 			 * Parses the trigger info of an action button.
 			 * @param {str} triggerAttribute The name of the attribute that triggered the event.
@@ -5237,22 +5251,83 @@
 			/**
 			 * Generates the roll text for a given event trigger.
 			 * @param {eventTrigger} eventTrigger The eventTrigger object for the trigger.
+			 * @param {Object} actions An object containing the  
 			 */
-			constructor(eventTrigger) {
-				if (eventTrigger.isRepeating) {
-				} else {
-				}
+			constructor(eventTrigger, actions) {
+				this.type = this.#type(eventTrigger);
+				console.log(this.type);
 			};
 
-			function test () {
+			#type = function (eventTrigger, attributes) {
+				function dice (eventTrigger) {
+					let type = '';
+					
+					const re = /(damage|combat-dice)/;
+					const found = re.exec(eventTrigger.action);
+		
+					if (found === null) {
+						type = 'd20';
+					} else {
+						type = 'd6';
+					}
+		
+					return type;
+				};
+
+				function d6 (eventTrigger) {
+					let type = '';
+					const re = /damage/;
+					const found = (re.exec(eventTrigger.action))[0];
+					if (found !== undefined) {type = 'damage'} else {type = 'cd'};
+					return type;
+				};
+	
+				function d20 (eventTrigger, attributes) {
+					let type = '';
+
+					const re = /(weapon-|attack-)/;
+					const found = re.exec(eventTrigger.action);
+
+					if (found !== null) {
+						type = 'attack'
+					} else {
+						if (eventTrigger.action in attributes) {
+							type = 'attribute'
+						} else {
+							type = 'skill'
+						}
+					}
+
+					return type;
+				};
+	
+				let type = '';
+
+				const d = dice(eventTrigger);
+	
+				switch (d) {
+					case 'd6':
+						type = d6(eventTrigger);
+						break;
+	
+					case 'd20':
+						type = d20(eventTrigger, attributes);
+						break;
 				
-			}
+					default:
+						type = 'unknown';
+						break;
+				}
+	
+				return type;
+			};
 	
 			// Determine what type of roll this is: skill check or damage?
 			// If skill check, is this an attack?
 				// If so, then the header is the weapon name. Also need to get the ammo and qualities.
 				// If not, header is the skill name.
 			// If damage in a repeating section, it has to be an attack. Header is weapon name.
+	
 		};
 	
 		function openSheet () {
@@ -5948,7 +6023,7 @@
 		};
 	
 		function generateAttackRoll (action, section, rowId) {
-			const re = /(damage|infowar|psywar|melee|ranged)/s;
+			const re = /(damage|infowar|psywar|melee|ranged)/g;
 			const actionType = (re.exec(action))[0];
 			var rollParams = {
 				'type': actionType,
@@ -6131,9 +6206,8 @@
 				// const attrAct = attr.replaceAll('_','-');
 				on(`clicked:${action}`, (info) => {
 					const triggerInfo = new eventTrigger(action, (info.sourceAttribute));
-					console.log(triggerInfo);
-					//console.log(triggerInfo);
-					// const rollInfo = new roll(triggerInfo);
+					const rollInfo = new roll(triggerInfo);
+					console.log(rollInfo);
 					//startRoll(rollInfo.rollString, (allRolls) => {
 					//    const computed = calcSkillRoll(allRolls.results).successes;
 					//    finishRoll(allRolls.rollId, computed);
