@@ -1,5 +1,7 @@
 /* #region WHOLE-SHEET USE */
 
+/* TODO: Add styling for read-only inputs so that their backgrounds are white. */
+
 @font-face {
 	font-family: 'Orbitron';
 	font-style: normal;
@@ -662,43 +664,88 @@ div.section {
 			margin-top: 4px;
 		}
 
+		.button-damage {
+			display: none;
+		}
+
 		/* Range, Burst, Size headers */
 		.WeaponStats-EvenLabel {
 			width: 10%;
 		}
 
-		/* Damage fields */
-		table.WeaponStats tr:nth-child(3) td:nth-child(2),
-		table.WeaponStats tr:nth-child(3) td:nth-child(4) {
-			width: 10%;
-		}
-
-		/* Damage cell "merge" */
-		table.WeaponStats tr:nth-child(3) td:nth-child(2) {
-			border-right-style: none;
-		}
-
-		table.WeaponStats tr:nth-child(3) td:nth-child(3) {
-			border-left-style: none;
-			border-right-style: none;
+		/* Damage cell */
+		td.weapon-damage {
+			width: 30%;
 			text-align: center;
-			width: 1%;
 		}
-
-		table.WeaponStats tr:nth-child(3) td:nth-child(4) {
-			border-left-style: none;
-		}
-
-		table.WeaponStats tr:nth-child(3) td:nth-child(4) input[type=text] {
-			width: 50%;
+		
+		td.weapon-damage input[type="text"] {
+			width: 30%;
 		}
 
 		/* Bottom row: Damage type & reloads */
 
-		td.WeaponType {
+		.WeaponType {
 			font-size: 1em;
 			color: black;
-			padding-left: 4px;
+			display: flex;
+			border: none;
+			height: 100%;
+			width: 100%;
+		}
+
+		input[value="Infowar"]:checked ~ button.button-infowar,
+		input[value="Psywar"]:checked ~ button.button-psywar,
+		input[value="Melee"]:checked ~ button.button-melee,
+		input[value="Ranged"]:checked ~ button.button-ranged {
+			display: inline;
+		}
+
+		input.weapon-tab {
+			width: 50px;
+			height: 28px;
+			cursor: pointer;	
+			position: static;
+			opacity: 0;
+			z-index: 9999;
+			margin: 0;
+		}
+
+		span.weapon-tab {
+			font-family: Tahoma;
+			text-align: center;
+			display: inline;
+			font-size: 16px;	
+			background: #eeeeee;
+			color: DarkGrey;
+			font-weight: bold;
+			
+			border: 1px solid #66cccc;
+			
+			width: 50px;
+			height: 28px;
+			cursor: pointer;	
+			position: static;
+			margin: 0;
+			vertical-align: middle;
+			margin-left: -50px;
+		}
+
+		input.weapon-tab-1:checked + span.weapon-tab-1,
+		input.weapon-tab-2:checked + span.weapon-tab-2,
+		input.weapon-tab-3:checked + span.weapon-tab-3,
+		input.weapon-tab-4:checked + span.weapon-tab-4 {
+			background: #333366;
+			color: white;
+		}
+
+		table.WeaponStats-bottom td.StatInput button {
+			margin: 0;
+			width: 24px;
+			height: 24px;
+			text-align: center;
+			position: relative;
+			left: 5px;
 		}
 
 		span.symbol-a {
@@ -1114,64 +1161,6 @@ table.defences tr:nth-child(2) td.StatInput input {
 
 .font-small {
 	font-size: 0.7em;
-}
-
-.button-damage {
-	display: none;
-}
-
-input[value="Infowar"]:checked ~ button.button-infowar,
-input[value="Psywar"]:checked ~ button.button-psywar,
-input[value="Melee"]:checked ~ button.button-melee,
-input[value="Ranged"]:checked ~ button.button-ranged {
-	display: inline;
-}
-
-input.weapon-tab {
-    width: 50px;
-    height: 28px;
-    cursor: pointer;	
-	position: static;
-	opacity: 0;
-	z-index: 9999;
-	margin: 0;
-}
-
-span.weapon-tab {
-	font-family: Tahoma;
-	text-align: center;
-    display: inline;
-	font-size: 16px;	
-	background: #eeeeee;
-	color: DarkGrey;
-	font-weight: bold;
-	
-	border: 1px solid #66cccc;
-	
-	width: 50px;
-    height: 28px;
-    cursor: pointer;	
-	position: static;
-	margin: 0;
-	vertical-align: middle;
-	margin-left: -50px;
-}
-
-input.weapon-tab-1:checked + span.weapon-tab-1,
-input.weapon-tab-2:checked + span.weapon-tab-2,
-input.weapon-tab-3:checked + span.weapon-tab-3,
-input.weapon-tab-4:checked + span.weapon-tab-4 {
-    background: #333366;
-    color: white;
-}
-
-table.WeaponStats-bottom td.StatInput button {
-	margin: 0;
-	width: 24px;
-	height: 24px;
-	text-align: center;
-	position: relative;
-	left: 5px;
 }
 
 /* #region: NPC */
