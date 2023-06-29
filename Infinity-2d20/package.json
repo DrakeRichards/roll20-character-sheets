@@ -1,0 +1,23 @@
+{
+  "name": "infinity-2d20",
+  "version": "1.0.0",
+  "description": "Custom Roll20 character sheet for the Modiphius Infinity 2d20 RPG",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrakeRichards/roll20-character-sheets.git"
+  },
+  "author": "Thomas Young",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrakeRichards/roll20-character-sheets/issues"
+  },
+  "homepage": "https://github.com/DrakeRichards/roll20-character-sheets#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-replace": "^1.1.4"
+  }
+}

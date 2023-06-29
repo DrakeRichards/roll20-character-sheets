@@ -1,3 +1,4 @@
+// Hello world!
 var Infinity2d20 =
   Infinity2d20 ||
   (function () {
